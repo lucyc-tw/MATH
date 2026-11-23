@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>國中會考理化與數學每日十題刷題特訓</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- KaTeX for Math & Physics Formulas -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '"Noto Sans TC"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#EEF2FF',
+              100: '#E0E7FF',
+              500: '#6366F1',
+              600: '#4F46E5',
+              700: '#4338CA',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #F8FAFC;
+      color: #0F172A;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .katex {
+      font-size: 1.05em;
+    }
+    .option-btn {
+      transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .option-btn:not(:disabled):hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px -4px rgba(79, 70, 229, 0.14);
+    }
+    .fade-in {
+      animation: fadeIn 0.24s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased">
+
+  <!-- Top Navigation Bar -->
+  <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-30">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-2">
+      <div class="flex items-center gap-3 cursor-pointer" onclick="switchView('home')">
+        <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center font-extrabold text-lg shadow-xs">
+          10
+        </div>
+        <div>
+          <h1 class="font-bold text-slate-900 text-base sm:text-lg leading-tight">會考理化與數學每日十題</h1>
+          <p class="text-xs text-slate-500 hidden sm:block">完整 87 題特訓題庫・錯題自動重練</p>
+        </div>
+      </div>
+
+      <nav class="flex items-center gap-1.5 sm:gap-2">
+        <button id="nav-home" onclick="switchView('home')" class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-colors bg-brand-50 text-brand-700">
+          特訓大廳
+        </button>
+        <button id="nav-browse" onclick="switchView('browse')" class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-colors text-slate-600 hover:bg-slate-100">
+          題庫總覽 <span id="total-bank-badge" class="ml-1 text-xs bg-brand-100 text-brand-700 font-bold px-2 py-0.5 rounded-full">87</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
+
+    <!-- ==================== VIEW 1: HOME DASHBOARD ==================== -->
+    <section id="view-home" class="fade-in space-y-6">
+      <!-- Status & Daily Goal Banner -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-7 shadow-xs">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div class="space-y-2 max-w-xl">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-50 text-brand-700 border border-indigo-100">
+              <span>🎯</span> 每日十題刷題特訓・完整收錄 87 題
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">今天的 10 題，準備好了嗎？</h2>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+              完整整合你的所有物理錯題與五大觀念單元（39 題），以及兩批會考數學錯題延伸題庫（48 題）。系統優先抽取未答對與錯題本題目，答錯自動收錄，答對即移除！
+            </p>
+          </div>
+
+          <div class="grid grid-cols-3 gap-3 sm:gap-4 shrink-0">
+            <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-3.5 sm:p-4 text-center">
+              <div class="text-xs text-slate-500 font-medium mb-1">累計作答</div>
+              <div id="stat-answered" class="text-xl sm:text-2xl font-extrabold text-slate-900">0</div>
+              <div class="text-[11px] text-slate-400 mt-0.5">共 <span id="stat-bank-total">87</span> 題</div>
+            </div>
+            <div class="bg-emerald-50/70 border border-emerald-200/80 rounded-2xl p-3.5 sm:p-4 text-center">
+              <div class="text-xs text-emerald-700 font-medium mb-1">累積正確率</div>
+              <div id="stat-accuracy" class="text-xl sm:text-2xl font-extrabold text-emerald-600">0%</div>
+              <div class="text-[11px] text-emerald-600/75 mt-0.5">精熟比率</div>
+            </div>
+            <div class="bg-rose-50/70 border border-rose-200/80 rounded-2xl p-3.5 sm:p-4 text-center">
+              <div class="text-xs text-rose-700 font-medium mb-1">錯題本待練</div>
+              <div id="stat-wrong" class="text-xl sm:text-2xl font-extrabold text-rose-600">0</div>
+              <div class="text-[11px] text-rose-600/75 mt-0.5">答對可移除</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Daily 10 Progress Bar -->
+        <div class="mt-6 pt-5 border-t border-slate-100">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm mb-2">
+            <span class="font-semibold text-slate-700">今日刷題進度：<span id="today-count" class="text-brand-600 font-extrabold">0</span> / 10 題</span>
+            <span id="today-status" class="text-brand-600 font-semibold">完成 10 題達成今日目標</span>
+          </div>
+          <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+            <div id="today-progress-bar" class="h-full bg-brand-600 rounded-full transition-all duration-500" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Primary Modes -->
+      <div>
+        <h3 class="text-base font-bold text-slate-800 mb-3">選擇刷題模式（每次最多 10 題）</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <button onclick="startQuiz('all')" class="group text-left bg-white hover:bg-brand-50/40 rounded-2xl border-2 border-brand-500 p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center text-xl">🔥</span>
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-brand-600 text-white">每日推薦</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-lg group-hover:text-brand-700">全部綜合特訓</h4>
+              <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                跨科目智慧抽 10 題，優先安排尚未精熟的物理力學、電學與會考數學延伸題。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-brand-600">
+              <span>題庫共 <span id="count-all">87</span> 題</span>
+              <span>開始刷題 →</span>
+            </div>
+          </button>
+
+          <button onclick="startQuiz('physics')" class="group text-left bg-white hover:bg-indigo-50/40 rounded-2xl border border-slate-200 hover:border-indigo-400 p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-xl">⚡</span>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700">理化專攻</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-lg group-hover:text-indigo-700">物理力學與電學</h4>
+              <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                自由落體衝力、串並聯電路圖、力矩、斜面、滑車、動滑輪、浮力與五大核心觀念。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-indigo-600">
+              <span>題庫共 <span id="count-physics">39</span> 題</span>
+              <span>開始刷題 →</span>
+            </div>
+          </button>
+
+          <button onclick="startQuiz('math')" class="group text-left bg-white hover:bg-amber-50/40 rounded-2xl border border-slate-200 hover:border-amber-400 p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl">📐</span>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-50 text-amber-800">數學專攻</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-lg group-hover:text-amber-700">數學幾何與函數</h4>
+              <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                第一、二批會考錯題全收錄：四邊形、根式、相似形、三心、圓切線、二次函數、柱體水高。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-amber-700">
+              <span>題庫共 <span id="count-math">48</span> 題</span>
+              <span>開始刷題 →</span>
+            </div>
+          </button>
+
+          <button onclick="startQuiz('wrong')" class="group text-left bg-white hover:bg-rose-50/40 rounded-2xl border border-slate-200 hover:border-rose-400 p-5 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="w-10 h-10 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center text-xl">📕</span>
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-rose-50 text-rose-700">弱點消滅</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-lg group-hover:text-rose-700">錯題本重練</h4>
+              <p class="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                專攻曾答錯的題目，只要重新作答正確，系統便會自動將該題移出錯題本。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-rose-600">
+              <span>目前 <span id="count-wrong-card">0</span> 題待練</span>
+              <span>立即重練 →</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Topic Filter Dropdown & Chips -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h3 class="text-sm font-bold text-slate-800">依特定單元抽題（每次最多 10 題）</h3>
+            <p class="text-xs text-slate-500 mt-0.5">可直接從下拉選單或下方單元標籤啟動單一單元特訓</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <select id="home-unit-select" onchange="if(this.value){ startQuiz('topic', this.value); this.value=''; }" class="px-3 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm bg-slate-50 text-slate-700 font-medium focus:outline-none focus:border-brand-500">
+              <option value="">選擇單元快速開始...</option>
+            </select>
+            <button onclick="confirmResetProgress()" class="px-3 py-2 rounded-xl text-xs text-slate-400 hover:text-rose-600 hover:bg-rose-50 font-medium transition-colors shrink-0">
+              重置紀錄
+            </button>
+          </div>
+        </div>
+        <div id="topic-chips" class="flex flex-wrap gap-2"></div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 2: QUIZ ENGINE ==================== -->
+    <section id="view-quiz" class="hidden fade-in max-w-3xl mx-auto">
+      <div class="mb-5">
+        <div class="flex items-center justify-between text-sm mb-2">
+          <button onclick="confirmQuitQuiz()" class="inline-flex items-center gap-1 text-slate-500 hover:text-slate-800 font-medium py-1.5 px-2.5 rounded-lg hover:bg-slate-200/60 transition-colors">
+            ← 離開本輪
+          </button>
+          <div class="flex items-center gap-2.5">
+            <span id="quiz-mode-label" class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-200/80 text-slate-700">全部綜合特訓</span>
+            <span class="font-bold text-slate-800">第 <span id="quiz-current-num" class="text-brand-600">1</span> / <span id="quiz-total-num">10</span> 題</span>
+          </div>
+        </div>
+        <div id="quiz-dots" class="grid gap-1.5"></div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+        <div class="p-5 sm:p-7">
+          <div class="flex flex-wrap items-center gap-2 mb-4">
+            <span id="q-subject-badge" class="text-xs font-bold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-700">物理</span>
+            <span id="q-topic-badge" class="text-xs font-medium px-2.5 py-1 rounded-md bg-slate-100 text-slate-600">單元</span>
+            <span id="q-id-badge" class="text-xs font-mono text-slate-400 ml-auto">#P01</span>
+          </div>
+
+          <div id="q-text" class="text-base sm:text-lg font-medium text-slate-900 leading-relaxed mb-5"></div>
+
+          <div id="q-diagram-container" class="hidden mb-6 p-4 bg-slate-50 rounded-xl border border-slate-200/80 flex flex-col items-center justify-center">
+            <div id="q-diagram" class="w-full max-w-sm flex justify-center"></div>
+            <span class="text-xs text-slate-400 mt-2">示意圖（僅供輔助思考，不一定代表實際比例）</span>
+          </div>
+
+          <div id="q-options" class="space-y-3"></div>
+        </div>
+
+        <!-- Instant Feedback -->
+        <div id="q-feedback-box" class="hidden border-t border-slate-200 bg-slate-50/90 p-5 sm:p-7 fade-in">
+          <div class="flex items-start gap-3 mb-3">
+            <div id="q-feedback-icon" class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold shrink-0 mt-0.5">✓</div>
+            <div>
+              <h4 id="q-feedback-title" class="font-bold text-base sm:text-lg text-slate-900">答對了！</h4>
+              <p id="q-feedback-subtitle" class="text-xs sm:text-sm text-slate-600 mt-0.5"></p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-slate-200/90 p-4 text-sm text-slate-700 leading-relaxed">
+            <div class="font-bold text-xs text-brand-700 uppercase tracking-wider mb-1.5">💡 詳細解析與觀念重點</div>
+            <div id="q-explanation"></div>
+          </div>
+
+          <div class="mt-5 flex justify-end">
+            <button id="btn-next-question" onclick="nextQuestion()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm sm:text-base shadow-xs transition-colors flex items-center justify-center gap-2">
+              <span>下一題</span>
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 3: SUMMARY ==================== -->
+    <section id="view-summary" class="hidden fade-in max-w-3xl mx-auto space-y-6">
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 text-center shadow-xs">
+        <div id="summary-emoji" class="text-5xl mb-3">🎉</div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">本輪練習完成！</h2>
+        <p id="summary-comment" class="text-slate-600 text-sm sm:text-base mt-1.5"></p>
+
+        <div class="grid grid-cols-3 gap-3 sm:gap-5 max-w-md mx-auto my-6">
+          <div class="bg-indigo-50/70 border border-indigo-100 rounded-xl p-4">
+            <div class="text-xs text-brand-700 font-medium">得分</div>
+            <div class="text-2xl sm:text-3xl font-extrabold text-brand-600 mt-1">
+              <span id="summary-score">0</span><span class="text-base text-slate-400 font-normal"> / <span id="summary-total">10</span></span>
+            </div>
+          </div>
+          <div class="bg-emerald-50/70 border border-emerald-100 rounded-xl p-4">
+            <div class="text-xs text-emerald-700 font-medium">答對</div>
+            <div id="summary-correct" class="text-2xl sm:text-3xl font-extrabold text-emerald-600 mt-1">0</div>
+          </div>
+          <div class="bg-rose-50/70 border border-rose-100 rounded-xl p-4">
+            <div class="text-xs text-rose-700 font-medium">答錯</div>
+            <div id="summary-wrong" class="text-2xl sm:text-3xl font-extrabold text-rose-600 mt-1">0</div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <button onclick="restartSameMode()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm transition-colors">
+            再刷一輪（同模式）
+          </button>
+          <button id="btn-retry-session-wrong" onclick="retrySessionWrong()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-semibold text-sm transition-colors hidden">
+            重練本次錯題
+          </button>
+          <button onclick="switchView('home')" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm transition-colors">
+            返回特訓大廳
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-xs">
+        <h3 class="font-bold text-slate-900 text-lg mb-4">本輪作答明細與解析</h3>
+        <div id="summary-review-list" class="space-y-4"></div>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 4: BROWSE BANK ==================== -->
+    <section id="view-browse" class="hidden fade-in space-y-5">
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs space-y-4">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-bold text-slate-900">完整題庫總覽</h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-0.5">目前顯示 <span id="browse-total-count" class="font-bold text-brand-600">87</span> 題，支援關鍵字搜尋、科目與單元篩選。</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <input id="browse-search" type="text" oninput="renderBrowseList()" placeholder="搜尋題目關鍵字..." class="px-3 py-2 rounded-xl border border-slate-200 text-sm bg-slate-50 text-slate-700 focus:outline-none focus:border-brand-500 w-full sm:w-48" />
+            <select id="browse-subject-filter" onchange="renderBrowseList()" class="px-3 py-2 rounded-xl border border-slate-200 text-sm bg-slate-50 text-slate-700 font-medium focus:outline-none focus:border-brand-500">
+              <option value="all">所有科目</option>
+              <option value="physics">物理（理化）</option>
+              <option value="math">數學</option>
+              <option value="wrong">僅顯示錯題本</option>
+            </select>
+            <select id="browse-topic-filter" onchange="renderBrowseList()" class="px-3 py-2 rounded-xl border border-slate-200 text-sm bg-slate-50 text-slate-700 font-medium focus:outline-none focus:border-brand-500">
+              <option value="all">所有單元</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div id="browse-list" class="space-y-4"></div>
+    </section>
+
+  </main>
+
+  <!-- Custom Modal Dialog (replaces alert/confirm) -->
+  <div id="custom-modal" class="hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-xl border border-slate-200 fade-in">
+      <h3 id="modal-title" class="text-lg font-bold text-slate-900">提示</h3>
+      <p id="modal-body" class="text-sm text-slate-600 mt-2 leading-relaxed"></p>
+      <div class="mt-5 flex justify-end gap-2.5">
+        <button id="modal-cancel" onclick="closeModal()" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-100 transition-colors">取消</button>
+        <button id="modal-confirm" class="px-4 py-2 rounded-xl text-sm font-semibold bg-brand-600 hover:bg-brand-700 text-white transition-colors">確定</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // INLINE SVG DIAGRAMS (Circuits, Pulleys, Levers, Inclines, Geometry)
+    // =========================================================================
+    const SVG_DIAGRAMS = {
+      circuit_24v: `
+        <svg viewBox="0 0 320 165" class="w-full h-auto max-h-44">
+          <polyline points="50,65 50,35 84,35" fill="none" stroke="#1e293b" stroke-width="2.2"/>
+          <polyline points="128,35 195,35" fill="none" stroke="#1e293b" stroke-width="2.2"/>
+          <polyline points="238,35 280,35 280,140 50,140 50,105" fill="none" stroke="#1e293b" stroke-width="2.2"/>
+          <line x1="35" y1="65" x2="65" y2="65" stroke="#1e293b" stroke-width="2.5"/>
+          <line x1="42" y1="75" x2="58" y2="75" stroke="#1e293b" stroke-width="2.5"/>
+          <line x1="35" y1="85" x2="65" y2="85" stroke="#1e293b" stroke-width="2.5"/>
+          <line x1="42" y1="95" x2="58" y2="95" stroke="#1e293b" stroke-width="2.5"/>
+          <text x="8" y="88" font-size="13" font-weight="bold" fill="#0f172a">24V</text>
+          <polyline points="84,35 89,27 96,43 103,27 110,43 117,27 124,43 128,35" fill="none" stroke="#4f46e5" stroke-width="2.2"/>
+          <text x="95" y="20" font-size="13" font-weight="bold" fill="#1e293b">4Ω</text>
+          <circle cx="160" cy="35" r="3" fill="#1e293b"/>
+          <polyline points="195,35 199,27 206,43 213,27 220,43 227,27 234,43 238,35" fill="none" stroke="#dc2626" stroke-width="2.2"/>
+          <text x="206" y="20" font-size="13" font-weight="bold" fill="#dc2626">6Ω</text>
+          <polyline points="160,35 160,95 195,95" fill="none" stroke="#1e293b" stroke-width="2.2"/>
+          <polyline points="195,95 199,87 206,103 213,87 220,103 227,87 234,103 238,95" fill="none" stroke="#1e293b" stroke-width="2.2"/>
+          <line x1="238" y1="95" x2="280" y2="95" stroke="#1e293b" stroke-width="2.2"/>
+          <text x="202" y="120" font-size="13" font-weight="bold" fill="#1e293b">12Ω</text>
+        </svg>
+      `,
+      circuit_30v: `
+        <svg viewBox="0 0 320 170" class="w-full h-auto max-h-44">
+          <polyline points="50,65 50,30 84,30" fill="none" stroke="#1e293b" stroke-width="2.2"/>
+          <polyline points="128,30 165,30" fill="none" stroke="#1e293b" stroke-width="2.2"/>
+          <polyline points="50,105 50,145 280,145 280,87" fill="none" stroke="#1e293b" stroke-width="2.2"/>
+          <line x1="35" y1="65" x2="65" y2="65" stroke="#1e293b" stroke-width="2.5"/>
+          <line x1="42" y1="75" x2="58" y2="75" stroke="#1e293b" stroke-width="2.5"/>
+          <line x1="35" y1="85" x2="65" y2="85" stroke="#1e293b" stroke-width="2.5"/>
+          <line x1="42" y1="95" x2="58" y2="95" stroke="#1e293b" stroke-width="2.5"/>
+          <text x="8" y="88" font-size="13" font-weight="bold" fill="#0f172a">30V</text>
+          <polyline points="84,30 89,22 96,38 103,22 110,38 117,22 124,38 128,30" fill="none" stroke="#4f46e5" stroke-width="2.2"/>
+          <text x="86" y="15" font-size="13" font-weight="bold" fill="#1e293b">R₁=2Ω</text>
+          <line x1="165" y1="30" x2="165" y2="115" stroke="#1e293b" stroke-width="2.2"/>
+          <line x1="165" y1="60" x2="190" y2="60" stroke="#1e293b" stroke-width="2.2"/>
+          <polyline points="190,60 194,52 201,68 208,52 215,68 222,52 229,68 233,60" fill="none" stroke="#dc2626" stroke-width="2.2"/>
+          <line x1="233" y1="60" x2="255" y2="60" stroke="#1e293b" stroke-width="2.2"/>
+          <text x="184" y="46" font-size="13" font-weight="bold" fill="#dc2626">R₂=12Ω</text>
+          <line x1="165" y1="115" x2="190" y2="115" stroke="#1e293b" stroke-width="2.2"/>
+          <polyline points="190,115 194,107 201,123 208,107 215,123 222,107 229,123 233,115" fill="none" stroke="#1e293b" stroke-width="2.2"/>
+          <line x1="233" y1="115" x2="255" y2="115" stroke="#1e293b" stroke-width="2.2"/>
+          <text x="184" y="101" font-size="13" font-weight="bold" fill="#1e293b">R₃=24Ω</text>
+          <line x1="255" y1="60" x2="255" y2="115" stroke="#1e293b" stroke-width="2.2"/>
+          <line x1="255" y1="87" x2="280" y2="87" stroke="#1e293b" stroke-width="2.2"/>
+        </svg>
+      `,
+      circuit_48v: `
+        <svg viewBox="0 0 320 170" class="w-full h-auto max-h-44">
+          <polyline points="50,65 50,30 84,30" fill="none" stroke="#1e293b" stroke-width="2.2"/>
+          <polyline points="128,30 280,30 280,145 50,145 50,105" fill="none" stroke="#1e293b" stroke-width="2.2"/>
+          <line x1="35" y1="65" x2="65" y2="65" stroke="#1e293b" stroke-width="2.5"/>
+          <line x1="42" y1="75" x2="58" y2="75" stroke="#1e293b" stroke-width="2.5"/>
+          <line x1="35" y1="85" x2="65" y2="85" stroke="#1e293b" stroke-width="2.5"/>
+          <line x1="42" y1="95" x2="58" y2="95" stroke="#1e293b" stroke-width="2.5"/>
+          <text x="8" y="88" font-size="13" font-weight="bold" fill="#0f172a">48V</text>
+          <polyline points="84,30 89,22 96,38 103,22 110,38 117,22 124,38 128,30" fill="none" stroke="#4f46e5" stroke-width="2.2"/>
+          <text x="95" y="15" font-size="13" font-weight="bold" fill="#1e293b">6Ω</text>
+          <line x1="165" y1="30" x2="165" y2="115" stroke="#1e293b" stroke-width="2.2"/>
+          <line x1="165" y1="70" x2="195" y2="70" stroke="#1e293b" stroke-width="2.2"/>
+          <polyline points="195,70 199,62 206,78 213,62 220,78 227,62 234,78 238,70" fill="none" stroke="#1e293b" stroke-width="2.2"/>
+          <line x1="238" y1="70" x2="280" y2="70" stroke="#1e293b" stroke-width="2.2"/>
+          <text x="202" y="56" font-size="13" font-weight="bold" fill="#1e293b">10Ω</text>
+          <line x1="165" y1="115" x2="195" y2="115" stroke="#1e293b" stroke-width="2.2"/>
+          <polyline points="195,115 199,107 206,123 213,107 220,123 227,107 234,123 238,115" fill="none" stroke="#dc2626" stroke-width="2.2"/>
+          <line x1="238" y1="115" x2="280" y2="115" stroke="#1e293b" stroke-width="2.2"/>
+          <text x="202" y="101" font-size="13" font-weight="bold" fill="#dc2626">15Ω</text>
+        </svg>
+      `,
+      circuit_12v: `
+        <svg viewBox="0 0 320 165" class="w-full h-auto max-h-44">
+          <polyline points="50,65 50,35 84,35" fill="none" stroke="#1e293b" stroke-width="2.2"/>
+          <polyline points="128,35 195,35" fill="none" stroke="#1e293b" stroke-width="2.2"/>
+          <polyline points="238,35 280,35 280,140 50,140 50,105" fill="none" stroke="#1e293b" stroke-width="2.2"/>
+          <line x1="35" y1="65" x2="65" y2="65" stroke="#1e293b" stroke-width="2.5"/>
+          <line x1="42" y1="75" x2="58" y2="75" stroke="#1e293b" stroke-width="2.5"/>
+          <line x1="35" y1="85" x2="65" y2="85" stroke="#1e293b" stroke-width="2.5"/>
+          <line x1="42" y1="95" x2="58" y2="95" stroke="#1e293b" stroke-width="2.5"/>
+          <text x="8" y="88" font-size="13" font-weight="bold" fill="#0f172a">12V</text>
+          <polyline points="84,35 89,27 96,43 103,27 110,43 117,27 124,43 128,35" fill="none" stroke="#4f46e5" stroke-width="2.2"/>
+          <text x="95" y="20" font-size="13" font-weight="bold" fill="#1e293b">2Ω</text>
+          <circle cx="160" cy="35" r="3" fill="#1e293b"/>
+          <polyline points="195,35 199,27 206,43 213,27 220,43 227,27 234,43 238,35" fill="none" stroke="#1e293b" stroke-width="2.2"/>
+          <text x="206" y="20" font-size="13" font-weight="bold" fill="#1e293b">3Ω</text>
+          <polyline points="160,35 160,95 195,95" fill="none" stroke="#1e293b" stroke-width="2.2"/>
+          <polyline points="195,95 199,87 206,103 213,87 220,103 227,87 234,103 238,95" fill="none" stroke="#dc2626" stroke-width="2.2"/>
+          <line x1="238" y1="95" x2="280" y2="95" stroke="#1e293b" stroke-width="2.2"/>
+          <text x="206" y="120" font-size="13" font-weight="bold" fill="#dc2626">6Ω</text>
+        </svg>
+      `,
+      lever_shoulder: `
+        <svg viewBox="0 0 300 130" class="w-full h-auto max-h-40">
+          <rect x="25" y="45" width="250" height="8" rx="2" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+          <polygon points="165,53 153,75 177,75" fill="#fde047" stroke="#ca8a04" stroke-width="2"/>
+          <text x="150" y="90" font-size="11" font-weight="bold" fill="#475569">肩膀支點</text>
+          <line x1="35" y1="53" x2="35" y2="82" stroke="#334155" stroke-width="1.8"/>
+          <rect x="22" y="82" width="26" height="22" fill="#e2e8f0" stroke="#334155" stroke-width="1.8"/>
+          <text x="23" y="97" font-size="11" font-weight="bold">左物</text>
+          <line x1="265" y1="53" x2="265" y2="82" stroke="#334155" stroke-width="1.8"/>
+          <rect x="252" y="82" width="26" height="22" fill="#cbd5e1" stroke="#334155" stroke-width="1.8"/>
+          <text x="253" y="97" font-size="11" font-weight="bold">右物</text>
+          <line x1="165" y1="12" x2="165" y2="40" stroke="#dc2626" stroke-width="2.4"/>
+          <polygon points="165,6 160,15 170,15" fill="#dc2626"/>
+          <text x="174" y="22" font-size="11" font-weight="bold" fill="#dc2626">支撐力 N</text>
+        </svg>
+      `,
+      incline_pulley: `
+        <svg viewBox="0 0 280 155" class="w-full h-auto max-h-40">
+          <polygon points="75,30 75,130 250,130" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+          <circle cx="72" cy="25" r="10" fill="#e2e8f0" stroke="#1e293b" stroke-width="2"/>
+          <line x1="62" y1="25" x2="62" y2="85" stroke="#475569" stroke-width="1.8"/>
+          <rect x="48" y="85" width="24" height="24" fill="#fee2e2" stroke="#dc2626" stroke-width="1.8"/>
+          <text x="54" y="101" font-size="11" font-weight="bold" fill="#991b1b">乙</text>
+          <line x1="78" y1="18" x2="175" y2="74" stroke="#475569" stroke-width="1.8"/>
+          <g transform="translate(175,74) rotate(30)">
+            <rect x="0" y="-12" width="32" height="22" fill="#dbeafe" stroke="#2563eb" stroke-width="1.8"/>
+            <text x="9" y="3" font-size="11" font-weight="bold" fill="#1e3a8a">甲</text>
+          </g>
+        </svg>
+      `,
+      cart_pulley: `
+        <svg viewBox="0 0 280 155" class="w-full h-auto max-h-40">
+          <rect x="20" y="65" width="180" height="75" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+          <rect x="45" y="35" width="44" height="24" rx="3" fill="#dbeafe" stroke="#2563eb" stroke-width="1.8"/>
+          <circle cx="55" cy="61" r="4" fill="#1e293b"/>
+          <circle cx="79" cy="61" r="4" fill="#1e293b"/>
+          <text x="55" y="51" font-size="11" font-weight="bold" fill="#1e3a8a">滑車</text>
+          <circle cx="204" cy="61" r="8" fill="#e2e8f0" stroke="#1e293b" stroke-width="2"/>
+          <line x1="89" y1="53" x2="204" y2="53" stroke="#475569" stroke-width="1.8"/>
+          <line x1="212" y1="61" x2="212" y2="105" stroke="#475569" stroke-width="1.8"/>
+          <rect x="198" y="105" width="28" height="26" fill="#fee2e2" stroke="#dc2626" stroke-width="1.8"/>
+          <text x="201" y="122" font-size="10" font-weight="bold" fill="#991b1b">砝碼</text>
+        </svg>
+      `,
+      movable_pulley: `
+        <svg viewBox="0 0 280 135" class="w-full h-auto max-h-40">
+          <line x1="15" y1="105" x2="245" y2="105" stroke="#334155" stroke-width="2.5"/>
+          <line x1="245" y1="20" x2="245" y2="105" stroke="#334155" stroke-width="3"/>
+          <rect x="165" y="70" width="38" height="35" fill="#dbeafe" stroke="#1e293b" stroke-width="2"/>
+          <text x="171" y="92" font-size="12" font-weight="bold" fill="#0f172a">物體</text>
+          <circle cx="95" cy="82" r="18" fill="#f1f5f9" stroke="#1e293b" stroke-width="2.2"/>
+          <circle cx="95" cy="82" r="3" fill="#1e293b"/>
+          <line x1="95" y1="100" x2="165" y2="100" stroke="#475569" stroke-width="1.8"/>
+          <line x1="95" y1="64" x2="245" y2="64" stroke="#475569" stroke-width="1.8"/>
+          <line x1="77" y1="82" x2="32" y2="82" stroke="#dc2626" stroke-width="2.4"/>
+          <polygon points="25,82 35,77 35,87" fill="#dc2626"/>
+          <text x="48" y="72" font-size="13" font-weight="bold" fill="#dc2626">F</text>
+        </svg>
+      `
+    };
+
+    // =========================================================================
+    // FULL 87-QUESTION DATABASE (NO TRUNCATION, ALL COMPLETE)
+    // =========================================================================
+    const questionBank = [
+      // ==================== 1. 物理 - 自由落體與衝力特訓 (10 題) ====================
+      {
+        id: 'P01', subject: 'physics', topic: '自由落體與衝力特訓',
+        question: '質量 $1\\text{ kg}$ 的物體自 $20\\text{ m}$ 高處自由落下，反彈至 $5\\text{ m}$ 高，若物體與地面接觸時間為 $0.02\\text{ s}$，且重力加速度 $g=10\\text{ m/s}^2$，則接觸地面期間，物體所受的平均合力大小為多少？',
+        options: ['$500\\text{ N}$', '$1000\\text{ N}$', '$1500\\text{ N}$', '$2000\\text{ N}$'],
+        correctIndex: 2,
+        explanation: '1. 落下觸地瞬時速度：$v_1 = \\sqrt{2gh_1} = \\sqrt{2 \\times 10 \\times 20} = 20\\text{ m/s}$（方向向下）。<br>2. 反彈離地瞬時速度：$v_2 = \\sqrt{2gh_2} = \\sqrt{2 \\times 10 \\times 5} = 10\\text{ m/s}$（方向向上）。<br>3. 設向上為正，速度變化量 $\\Delta v = 10 - (-20) = 30\\text{ m/s}$。<br>4. 平均合力 $F = m\\frac{\\Delta v}{\\Delta t} = 1 \\times \\frac{30}{0.02} = 1500\\text{ N}$。'
+      },
+      {
+        id: 'P02', subject: 'physics', topic: '自由落體與衝力特訓',
+        question: '質量 $0.5\\text{ kg}$ 的球自 $45\\text{ m}$ 處自由落下，反彈至 $20\\text{ m}$，接觸地面時間為 $0.1\\text{ s}$。若 $g=10\\text{ m/s}^2$，則接觸地面期間，球所受的平均合力大小為何？',
+        options: ['$50\\text{ N}$', '$150\\text{ N}$', '$250\\text{ N}$', '$500\\text{ N}$'],
+        correctIndex: 2,
+        explanation: '1. 觸地速度 $v_1 = \\sqrt{2 \\times 10 \\times 45} = 30\\text{ m/s}$（向下）。<br>2. 反彈速度 $v_2 = \\sqrt{2 \\times 10 \\times 20} = 20\\text{ m/s}$（向上）。<br>3. 速度變化量 $\\Delta v = 20 - (-30) = 50\\text{ m/s}$。<br>4. 平均合力 $F = 0.5 \\times \\frac{50}{0.1} = 250\\text{ N}$。'
+      },
+      {
+        id: 'P03', subject: 'physics', topic: '自由落體與衝力特訓',
+        question: '質量 $2\\text{ kg}$ 的鋼球自 $10\\text{ m}$ 處自由落下，反彈至 $2.5\\text{ m}$ 處，若接觸地面時間為 $0.01\\text{ s}$，重力加速度 $g=9.8\\text{ m/s}^2$。求此期間的平均合力大小？',
+        options: ['$1400\\text{ N}$', '$2100\\text{ N}$', '$2800\\text{ N}$', '$4200\\text{ N}$'],
+        correctIndex: 3,
+        explanation: '1. 觸地速度 $v_1 = \\sqrt{2 \\times 9.8 \\times 10} = \\sqrt{196} = 14\\text{ m/s}$（向下）。<br>2. 反彈速度 $v_2 = \\sqrt{2 \\times 9.8 \\times 2.5} = \\sqrt{49} = 7\\text{ m/s}$（向上）。<br>3. 速度變化量 $\\Delta v = 7 - (-14) = 21\\text{ m/s}$。<br>4. 平均合力 $F = 2 \\times \\frac{21}{0.01} = 4200\\text{ N}$。'
+      },
+      {
+        id: 'P04', subject: 'physics', topic: '自由落體與衝力特訓',
+        question: '一物體自高處落下，觸地瞬間速度為向下 $20\\text{ m/s}$，反彈離地瞬間速度為向上 $10\\text{ m/s}$，請問在接觸地面的過程中，該物體的速度變化量大小為多少？',
+        options: ['$10\\text{ m/s}$', '$20\\text{ m/s}$', '$30\\text{ m/s}$', '$40\\text{ m/s}$'],
+        correctIndex: 2,
+        explanation: '速度為向量，具有方向性。設向上為正方向，則初速 $v_1 = -20\\text{ m/s}$，末速 $v_2 = +10\\text{ m/s}$。<br>速度變化量 $\\Delta v = v_2 - v_1 = 10 - (-20) = 30\\text{ m/s}$。'
+      },
+      {
+        id: 'P05', subject: 'physics', topic: '自由落體與衝力特訓',
+        question: '質量 $0.1\\text{ kg}$ 的黏土球自 $5\\text{ m}$ 處自由落下，擊中地面後<strong>不再反彈</strong>（即完全停在地面）。若接觸地面至停止的時間為 $0.05\\text{ s}$，重力加速度 $g=10\\text{ m/s}^2$。求黏土球受到的平均合力大小？',
+        options: ['$10\\text{ N}$', '$20\\text{ N}$', '$40\\text{ N}$', '$100\\text{ N}$'],
+        correctIndex: 1,
+        explanation: '1. 觸地速度 $v_1 = \\sqrt{2 \\times 10 \\times 5} = 10\\text{ m/s}$（向下）。<br>2. 因為不再反彈，末速 $v_2 = 0$，速度變化量大小 $\\Delta v = 10\\text{ m/s}$。<br>3. 平均合力 $F = 0.1 \\times \\frac{10}{0.05} = 20\\text{ N}$。'
+      },
+      {
+        id: 'P06', subject: 'physics', topic: '自由落體與衝力特訓',
+        question: '質量 $0.2\\text{ kg}$ 的皮球自 $1.8\\text{ m}$ 處落下，反彈至 $0.8\\text{ m}$ 處。若重力加速度 $g=10\\text{ m/s}^2$，則地面對皮球造成的衝量（動量變化量）大小為多少？',
+        options: ['$0.4\\text{ N}\\cdot\\text{s}$', '$1.2\\text{ N}\\cdot\\text{s}$', '$2.0\\text{ N}\\cdot\\text{s}$', '$4.0\\text{ N}\\cdot\\text{s}$'],
+        correctIndex: 2,
+        explanation: '1. 觸地速度 $v_1 = \\sqrt{2 \\times 10 \\times 1.8} = \\sqrt{36} = 6\\text{ m/s}$（向下）。<br>2. 反彈速度 $v_2 = \\sqrt{2 \\times 10 \\times 0.8} = \\sqrt{16} = 4\\text{ m/s}$（向上）。<br>3. 衝量大小 $= m\\Delta v = 0.2 \\times [4 - (-6)] = 0.2 \\times 10 = 2.0\\text{ N}\\cdot\\text{s}$。'
+      },
+      {
+        id: 'P07', subject: 'physics', topic: '自由落體與衝力特訓',
+        question: '質量 $1\\text{ kg}$ 的物體自 $5\\text{ m}$ 處自由落下，反彈至 $1.25\\text{ m}$ 處。已知物體觸地期間受到的平均合力為 $600\\text{ N}$，重力加速度 $g=10\\text{ m/s}^2$。求物體與地面的接觸時間為多少秒？',
+        options: ['$0.01\\text{ s}$', '$0.025\\text{ s}$', '$0.05\\text{ s}$', '$0.1\\text{ s}$'],
+        correctIndex: 1,
+        explanation: '1. 觸地速度 $v_1 = \\sqrt{20 \\times 5} = 10\\text{ m/s}$，反彈速度 $v_2 = \\sqrt{20 \\times 1.25} = 5\\text{ m/s}$。<br>2. 速度變化量 $\\Delta v = 5 - (-10) = 15\\text{ m/s}$。<br>3. 由 $F = \\frac{m\\Delta v}{\\Delta t}$ 得 $\\Delta t = \\frac{1 \\times 15}{600} = 0.025\\text{ s}$。'
+      },
+      {
+        id: 'P08', subject: 'physics', topic: '自由落體與衝力特訓',
+        question: '某球自 $3.2\\text{ m}$ 高處自由落下，反彈至 $1.8\\text{ m}$ 處。若接觸地面時間為 $0.02\\text{ s}$，期間測得平均合力為 $1400\\text{ N}$，且 $g=10\\text{ m/s}^2$。請問該球的質量為多少？',
+        options: ['$0.5\\text{ kg}$', '$1\\text{ kg}$', '$2\\text{ kg}$', '$4\\text{ kg}$'],
+        correctIndex: 2,
+        explanation: '1. 觸地速度 $v_1 = \\sqrt{20 \\times 3.2} = 8\\text{ m/s}$，反彈速度 $v_2 = \\sqrt{20 \\times 1.8} = 6\\text{ m/s}$。<br>2. 速度變化量 $\\Delta v = 6 - (-8) = 14\\text{ m/s}$。<br>3. 由 $F = m\\frac{\\Delta v}{\\Delta t}$ 得 $1400 = m \\times \\frac{14}{0.02} \\Rightarrow m = 2\\text{ kg}$。'
+      },
+      {
+        id: 'P09', subject: 'physics', topic: '自由落體與衝力特訓',
+        question: '質量 $1\\text{ kg}$ 的彈力球自 $5\\text{ m}$ 高處落下，發生完全彈性碰撞（即反彈高度與落下高度相同）。若接觸地面時間為 $0.1\\text{ s}$，$g=10\\text{ m/s}^2$。求接觸地面期間的平均合力大小？',
+        options: ['$0\\text{ N}$', '$100\\text{ N}$', '$200\\text{ N}$', '$400\\text{ N}$'],
+        correctIndex: 2,
+        explanation: '1. 觸地速度 $v_1 = 10\\text{ m/s}$（向下），反彈速度 $v_2 = 10\\text{ m/s}$（向上）。<br>2. 速度變化量 $\\Delta v = 10 - (-10) = 20\\text{ m/s}$。<br>3. 平均合力 $F = 1 \\times \\frac{20}{0.1} = 200\\text{ N}$。'
+      },
+      {
+        id: 'P10', subject: 'physics', topic: '自由落體與衝力特訓',
+        question: '質量 $1\\text{ kg}$ 的物體落下 $20\\text{ m}$ 後反彈 $5\\text{ m}$，接觸時間 $\\Delta t = 0.02\\text{ s}$，$g=10\\text{ m/s}^2$，已算出平均合力為 $1500\\text{ N}$。請問在觸地期間，「地面給予物體的平均正向力」大小為何？',
+        options: ['$1490\\text{ N}$', '$1500\\text{ N}$', '$1510\\text{ N}$', '$1600\\text{ N}$'],
+        correctIndex: 2,
+        explanation: '觸地期間物體同時受「向上的地面正向力 $N$」與「向下的重力 $mg = 1 \\times 10 = 10\\text{ N}$」。<br>向上合力 $F_{\\text{合}} = N - mg = 1500\\text{ N}$，故地面正向力 $N = 1500 + 10 = 1510\\text{ N}$。'
+      },
+
+      // ==================== 2. 物理 - 電流、電壓與歐姆定律 (7 題) ====================
+      {
+        id: 'P11', subject: 'physics', topic: '電流、電壓與歐姆定律', svg: 'circuit_24v',
+        question: '有一電路如圖所示，電源為 $24\\text{V}$，主線路串聯一個 $4\\,\\Omega$ 電阻後，再並聯 $6\\,\\Omega$ 與 $12\\,\\Omega$ 兩電阻。請問在 <strong>$6\\,\\Omega$ 處</strong>，電流 $I$ 與電壓 $V$ 分別為何？',
+        options: ['$I=6\\text{A},\\ V=10\\text{V}$', '$I=2\\text{A},\\ V=12\\text{V}$', '$I=7\\text{A},\\ V=5\\text{V}$', '$I=9\\text{A},\\ V=4\\text{V}$'],
+        correctIndex: 1,
+        explanation: '1. 並聯區等效電阻：$R_p = \\frac{6 \\times 12}{6 + 12} = 4\\,\\Omega$。<br>2. 總電阻 $R_t = 4 + 4 = 8\\,\\Omega$，總電流 $I_{\\text{總}} = \\frac{24}{8} = 3\\text{A}$。<br>3. 並聯區電壓 $V_p = 3\\text{A} \\times 4\\,\\Omega = 12\\text{V}$。<br>4. $6\\,\\Omega$ 分支電流 $I = \\frac{12}{6} = 2\\text{A}$。'
+      },
+      {
+        id: 'P12', subject: 'physics', topic: '電流、電壓與歐姆定律', svg: 'circuit_30v',
+        question: '有一電路如圖所示，電源為 $30\\text{V}$，串聯 $R_1=2\\,\\Omega$ 後，再並聯 $R_2=12\\,\\Omega$ 與 $R_3=24\\,\\Omega$。請問在 <strong>$12\\,\\Omega$ 處</strong>，電流 $I$ 與電壓 $V$ 分別為何？',
+        options: ['$I=2\\text{A},\\ V=24\\text{V}$', '$I=3\\text{A},\\ V=36\\text{V}$', '$I=1.5\\text{A},\\ V=18\\text{V}$', '$I=2\\text{A},\\ V=12\\text{V}$'],
+        correctIndex: 0,
+        explanation: '1. 並聯等效電阻：$R_p = \\frac{12 \\times 24}{12 + 24} = 8\\,\\Omega$。<br>2. 總電阻 $R_t = 2 + 8 = 10\\,\\Omega$，總電流 $I_{\\text{總}} = \\frac{30}{10} = 3\\text{A}$。<br>3. 並聯區電壓 $V_p = 3\\text{A} \\times 8\\,\\Omega = 24\\text{V}$。<br>4. $12\\,\\Omega$ 分支電流 $I = \\frac{24}{12} = 2\\text{A}$。'
+      },
+      {
+        id: 'P13', subject: 'physics', topic: '電流、電壓與歐姆定律', svg: 'circuit_48v',
+        question: '如圖所示電路，電源為 $48\\text{V}$，串聯 $6\\,\\Omega$ 電阻後，再並聯 $10\\,\\Omega$ 與 $15\\,\\Omega$ 電阻。請問在 <strong>$15\\,\\Omega$ 處</strong>，電流 $I$ 與電壓 $V$ 分別為何？',
+        options: ['$I=1.6\\text{A},\\ V=24\\text{V}$', '$I=2.4\\text{A},\\ V=24\\text{V}$', '$I=2\\text{A},\\ V=30\\text{V}$', '$I=4\\text{A},\\ V=48\\text{V}$'],
+        correctIndex: 0,
+        explanation: '1. 並聯等效電阻：$R_p = \\frac{10 \\times 15}{10 + 15} = 6\\,\\Omega$。<br>2. 總電阻 $R_t = 6 + 6 = 12\\,\\Omega$，總電流 $I_{\\text{總}} = \\frac{48}{12} = 4\\text{A}$。<br>3. 並聯區電壓 $V_p = 4 \\times 6 = 24\\text{V}$。<br>4. $15\\,\\Omega$ 分支電流 $I = \\frac{24}{15} = 1.6\\text{A}$。'
+      },
+      {
+        id: 'P14', subject: 'physics', topic: '電流、電壓與歐姆定律', svg: 'circuit_12v',
+        question: '如圖所示電路，電源為 $12\\text{V}$，串聯 $2\\,\\Omega$ 電阻後，再並聯 $3\\,\\Omega$ 與 $6\\,\\Omega$ 電阻。請問在 <strong>$6\\,\\Omega$ 處</strong>，電流 $I$ 與電壓 $V$ 分別為何？',
+        options: ['$I=1\\text{A},\\ V=6\\text{V}$', '$I=2\\text{A},\\ V=12\\text{V}$', '$I=3\\text{A},\\ V=6\\text{V}$', '$I=2\\text{A},\\ V=6\\text{V}$'],
+        correctIndex: 0,
+        explanation: '1. 並聯等效電阻：$R_p = \\frac{3 \\times 6}{3 + 6} = 2\\,\\Omega$。<br>2. 總電阻 $R_t = 2 + 2 = 4\\,\\Omega$，總電流 $I_{\\text{總}} = \\frac{12}{4} = 3\\text{A}$。<br>3. 並聯區電壓 $V_p = 3 \\times 2 = 6\\text{V}$。<br>4. $6\\,\\Omega$ 分支電流 $I = \\frac{6}{6} = 1\\text{A}$。'
+      },
+      {
+        id: 'P15', subject: 'physics', topic: '電流、電壓與歐姆定律',
+        question: '將兩個電阻值分別為 $R_1$ 與 $R_2$ 的燈泡串聯接於電池兩端，已知 $R_1 > R_2$。關於兩燈泡的電流 $I$ 與兩端電壓 $V$，下列敘述何者正確？',
+        options: ['$I_1 > I_2$', '$I_1 < I_2$', '$V_1 > V_2$', '$V_1 < V_2$'],
+        correctIndex: 2,
+        explanation: '串聯電路中流經各元件的電流必然相等（$I_1 = I_2$）。根據歐姆定律 $V = IR$，電流相同時電阻越大分得電壓越大，因 $R_1 > R_2$，故 $V_1 > V_2$。'
+      },
+      {
+        id: 'P16', subject: 'physics', topic: '電流、電壓與歐姆定律',
+        question: '關於符合歐姆定律的導體（歐姆式導體），下列敘述何者正確？',
+        options: ['電阻值會隨外加電壓的增加而變大', '導體兩端的電壓與通過的電流成正比', '導體兩端的電壓與通過的電流成反比', '無論通電時間長短，導體的溫度必保持恆定不變'],
+        correctIndex: 1,
+        explanation: '歐姆定律指出在定溫下，金屬導體兩端的電壓 $V$ 與通過的電流 $I$ 成正比（$V = IR$，電阻 $R$ 為定值，$V-I$ 圖為通過原點的斜直線）。'
+      },
+      {
+        id: 'P17', subject: 'physics', topic: '電流、電壓與歐姆定律',
+        question: '家庭電路中，通常將多個電器並聯使用。當家中同時開啟的電器數量增加時，總迴路的變化為何？',
+        options: ['總電阻增加，總電流減少', '總電阻減少，總電流增加', '總電壓增加，總電流不變', '總電壓減少，總電流減少'],
+        correctIndex: 1,
+        explanation: '並聯路徑增加會使總等效電阻變小；市電總電壓維持不變，由 $I = \\frac{V}{R}$ 可知總電流會增加。'
+      },
+
+      // ==================== 3. 物理 - 靜力平衡與力矩 (3 題) ====================
+      {
+        id: 'P18', subject: 'physics', topic: '靜力平衡與力矩', svg: 'lever_shoulder',
+        question: '一根不計質量的輕木棒，左端掛 $4\\text{ kg}$ 重物，右端掛 $6\\text{ kg}$ 重物，用肩膀頂住木棒某處使其水平靜止平衡。關於肩膀支撐位置與支撐力大小，下列何者正確？',
+        options: ['支撐力 $10\\text{ kgw}$，支點距左、右兩端比為 $2:3$', '支撐力 $10\\text{ kgw}$，支點距左、右兩端比為 $3:2$', '支撐力 $2\\text{ kgw}$，支點距左、右兩端比為 $3:2$', '支撐力 $24\\text{ kgw}$，支點位於木棒正中央'],
+        correctIndex: 1,
+        explanation: '1. 靜力平衡：向上支撐力 $= 4\\text{ kgw} + 6\\text{ kgw} = 10\\text{ kgw}$。<br>2. 力矩平衡：$4 \\times d_左 = 6 \\times d_右 \\Rightarrow d_左 : d_右 = 6 : 4 = 3 : 2$（支點較靠近較重的 $6\\text{ kg}$）。'
+      },
+      {
+        id: 'P19', subject: 'physics', topic: '靜力平衡與力矩', svg: 'lever_shoulder',
+        question: '長 $100\\text{ cm}$ 均勻木棒本身重 $2\\text{ kgw}$，左端掛 $3\\text{ kg}$ 重物、右端掛 $5\\text{ kg}$ 重物。若將支點放在距離右端 $40\\text{ cm}$ 處，欲使木棒水平靜止，應在何處施力或支撐力總和為多少？若改由肩膀直接扛起整組平衡系統，肩膀需承受多少向下的總重力？',
+        options: ['$8\\text{ kgw}$', '$10\\text{ kgw}$', '$12\\text{ kgw}$', '$15\\text{ kgw}$'],
+        correctIndex: 1,
+        explanation: '系統達到靜力平衡時，肩膀向上的總支撐力等於所有向下的重力總和：左物 $3\\text{ kgw} +$ 右物 $5\\text{ kgw} +$ 木棒重 $2\\text{ kgw} = 10\\text{ kgw}$。'
+      },
+      {
+        id: 'P20', subject: 'physics', topic: '靜力平衡與力矩', svg: 'lever_shoulder',
+        question: '長 $150\\text{ cm}$ 輕木棒（不計質量），左端掛 $2\\text{ kg}$ 重物、右端掛 $8\\text{ kg}$ 重物。若肩膀撐在使木棒水平平衡的位置，則肩膀距離右端多少公分？',
+        options: ['$30\\text{ cm}$', '$50\\text{ cm}$', '$75\\text{ cm}$', '$120\\text{ cm}$'],
+        correctIndex: 0,
+        explanation: '設肩膀距右端 $x\\text{ cm}$，則距左端 $(150 - x)\\text{ cm}$。<br>由力矩平衡：$2 \\times (150 - x) = 8 \\times x \\Rightarrow 300 - 2x = 8x \\Rightarrow 10x = 300 \\Rightarrow x = 30\\text{ cm}$。'
+      },
+
+      // ==================== 4. 物理 - 斜面平衡與能量轉換 (3 題) ====================
+      {
+        id: 'P21', subject: 'physics', topic: '斜面平衡與能量轉換', svg: 'incline_pulley',
+        question: '光滑斜面上置一重 $10\\text{ kg}$ 的甲物體，透過定滑輪與懸掛重 $6\\text{ kg}$ 的乙物體相連。若乙<strong>等速度下降</strong> $2\\text{ m}$，下列敘述何者正確？',
+        options: ['乙的重力位能全部轉成甲的動能', '甲與乙的重力位能都減少', '若斜面長 $5\\text{ m}$，則此斜面高 $3\\text{ m}$', '乙的重力位能減少 $1200\\text{ J}$'],
+        correctIndex: 2,
+        explanation: '1. 「等速度」代表速度不變、動能不變，乙減少的位能轉為甲增加的位能。<br>2. 力平衡：$6g = 10g\\sin\\theta \\Rightarrow \\sin\\theta = \\frac{3}{5}$。當斜面長 $5\\text{ m}$ 時，斜面高 $= 5 \\times \\frac{3}{5} = 3\\text{ m}$。'
+      },
+      {
+        id: 'P22', subject: 'physics', topic: '斜面平衡與能量轉換', svg: 'incline_pulley',
+        question: '光滑斜面長 $10\\text{ m}$、高 $6\\text{ m}$，斜面上放一質量 $5\\text{ kg}$ 的甲物體，經定滑輪連接懸掛的乙物體。若系統維持等速度移動（乙下降 $1\\text{ m}$），求乙的質量及此過程中甲增加的重力位能？（$g=10\\text{ m/s}^2$）',
+        options: ['乙質量 $3\\text{ kg}$，甲位能增加 $30\\text{ J}$', '乙質量 $3\\text{ kg}$，甲位能增加 $50\\text{ J}$', '乙質量 $5\\text{ kg}$，甲位能增加 $30\\text{ J}$', '乙質量 $4\\text{ kg}$，甲位能增加 $40\\text{ J}$'],
+        correctIndex: 0,
+        explanation: '1. $\\sin\\theta = \\frac{6}{10} = \\frac{3}{5}$，力平衡：$m_乙 g = 5g \\times \\frac{3}{5} \\Rightarrow m_乙 = 3\\text{ kg}$。<br>2. 無摩擦且等速移動時力學能守恆，乙減少的位能等於甲增加的位能：$\\Delta U = 3 \\times 10 \\times 1 = 30\\text{ J}$。'
+      },
+      {
+        id: 'P23', subject: 'physics', topic: '斜面平衡與能量轉換', svg: 'incline_pulley',
+        question: '光滑斜面的傾角為 $30^\\circ$，斜面上放置質量 $8\\text{ kg}$ 的物體甲，以細繩繞過定滑輪連接垂直懸掛的物體乙。若釋放後甲沿斜面<strong>等速度上滑</strong>，則乙的質量應為多少？（$\\sin 30^\\circ = \\frac{1}{2}$）',
+        options: ['$2\\text{ kg}$', '$4\\text{ kg}$', '$4\\sqrt{3}\\text{ kg}$', '$8\\text{ kg}$'],
+        correctIndex: 1,
+        explanation: '等速度運動表示合力為零，乙向下的重力等於甲沿斜面向下的重力分量：$m_乙 g = m_甲 g \\sin 30^\\circ = 8g \\times \\frac{1}{2} = 4g \\Rightarrow m_乙 = 4\\text{ kg}$。'
+      },
+
+      // ==================== 5. 物理 - 牛頓第二運動定律與系統 (3 題) ====================
+      {
+        id: 'P24', subject: 'physics', topic: '牛頓第二運動定律與系統', svg: 'cart_pulley',
+        question: '在粗糙水平桌面上作滑車實驗，滑車質量 $1\\text{ kg}$，懸掛砝碼質量 $10\\text{ kg}$，測得滑車加速度為 $6\\text{ m/s}^2$。若 $g=10\\text{ m/s}^2$，則滑車在粗糙面上所受的摩擦力為多少牛頓？',
+        options: ['$5.0\\text{ N}$', '$10.0\\text{ N}$', '$12.0\\text{ N}$', '$34\\text{ N}$'],
+        correctIndex: 3,
+        explanation: '將滑車與砝碼視為同一系統，總質量 $m = 1 + 10 = 11\\text{ kg}$。<br>系統合力 $F_{\\text{合}} = W_{砝碼} - f = 10 \\times 10 - f = 100 - f$。<br>由 $F = ma$：$100 - f = 11 \\times 6 = 66 \\Rightarrow f = 34\\text{ N}$。'
+      },
+      {
+        id: 'P25', subject: 'physics', topic: '牛頓第二運動定律與系統', svg: 'cart_pulley',
+        question: '在粗糙水平桌面上，質量 $2\\text{ kg}$ 的滑車以細繩連接懸掛質量 $3\\text{ kg}$ 的砝碼。已知滑車與桌面間的動摩擦力固定為 $10\\text{ N}$，若 $g=10\\text{ m/s}^2$，放手後系統的加速度大小為何？',
+        options: ['$2\\text{ m/s}^2$', '$4\\text{ m/s}^2$', '$6\\text{ m/s}^2$', '$10\\text{ m/s}^2$'],
+        correctIndex: 1,
+        explanation: '系統總質量 $m = 2 + 3 = 5\\text{ kg}$。<br>系統合力 $F_{\\text{合}} = 3 \\times 10 - 10 = 20\\text{ N}$。<br>加速度 $a = \\frac{F_{\\text{合}}}{m} = \\frac{20}{5} = 4\\text{ m/s}^2$。'
+      },
+      {
+        id: 'P26', subject: 'physics', topic: '牛頓第二運動定律與系統', svg: 'cart_pulley',
+        question: '在光滑無摩擦的水平桌面上，質量 $3\\text{ kg}$ 的滑車被懸掛質量 $2\\text{ kg}$ 的砝碼拉動（$g=10\\text{ m/s}^2$）。請問系統加速度及連接滑車與砝碼之間的細繩張力各為何？',
+        options: ['$a=4\\text{ m/s}^2$，張力 $12\\text{ N}$', '$a=4\\text{ m/s}^2$，張力 $20\\text{ N}$', '$a=6.7\\text{ m/s}^2$，張力 $20\\text{ N}$', '$a=10\\text{ m/s}^2$，張力 $30\\text{ N}$'],
+        correctIndex: 0,
+        explanation: '1. 系統總質量 $m = 3 + 2 = 5\\text{ kg}$，合力 $F = 2 \\times 10 = 20\\text{ N}$，加速度 $a = \\frac{20}{5} = 4\\text{ m/s}^2$。<br>2. 單獨看滑車，繩張力 $T = m_{車} a = 3 \\times 4 = 12\\text{ N}$。'
+      },
+
+      // ==================== 6. 物理 - 動滑輪與加速度 (3 題) ====================
+      {
+        id: 'P27', subject: 'physics', topic: '動滑輪與加速度', svg: 'movable_pulley',
+        question: '如圖所示，將質量 $2\\text{ kg}$ 的物體靜置於光滑平面，細繩一端綁在物體上，繞過動滑輪後固定在牆上。今施水平拉力 $F$ 於動滑輪上，使動滑輪產生 $0.5\\text{ m/s}^2$ 的加速度，求施力 $F$ 為多少牛頓？（不計滑輪與繩重）',
+        options: ['$1\\text{ N}$', '$2\\text{ N}$', '$4\\text{ N}$', '$8\\text{ N}$'],
+        correctIndex: 2,
+        explanation: '1. 動滑輪移動 $1\\text{ m}$，上下兩段繩子各縮短 $1\\text{ m}$，物體移動 $2\\text{ m}$，故物體加速度 $a_{物} = 2 \\times 0.5 = 1\\text{ m/s}^2$。<br>2. 繩子張力 $T = m_{物} a_{物} = 2 \\times 1 = 2\\text{ N}$。<br>3. 動滑輪受兩段繩子拉扯且質量不計，故 $F = 2T = 4\\text{ N}$。'
+      },
+      {
+        id: 'P28', subject: 'physics', topic: '動滑輪與加速度', svg: 'movable_pulley',
+        question: '光滑水平面上有一質量 $4\\text{ kg}$ 的物體，利用動滑輪裝置（一端固定牆面、另一端綁物體）施水平力 $F$ 拉動滑輪軸心。若欲使動滑輪產生 $1.5\\text{ m/s}^2$ 的加速度，所需施力 $F$ 為多少牛頓？（不計滑輪重）',
+        options: ['$6\\text{ N}$', '$12\\text{ N}$', '$24\\text{ N}$', '$48\\text{ N}$'],
+        correctIndex: 2,
+        explanation: '1. 物體加速度 $a_{物} = 2 \\times 1.5 = 3\\text{ m/s}^2$。<br>2. 繩張力 $T = 4 \\times 3 = 12\\text{ N}$。<br>3. 施力 $F = 2T = 2 \\times 12 = 24\\text{ N}$。'
+      },
+      {
+        id: 'P29', subject: 'physics', topic: '動滑輪與加速度', svg: 'movable_pulley',
+        question: '承上題動滑輪裝置，若物體質量為 $3\\text{ kg}$ 置於光滑水平面上，施水平力 $F = 18\\text{ N}$ 於動滑輪軸心上（不計滑輪質量與摩擦），則動滑輪的加速度大小為何？',
+        options: ['$1.5\\text{ m/s}^2$', '$3\\text{ m/s}^2$', '$6\\text{ m/s}^2$', '$9\\text{ m/s}^2$'],
+        correctIndex: 0,
+        explanation: '1. 施力 $F = 18\\text{ N} = 2T \\Rightarrow$ 單段繩張力 $T = 9\\text{ N}$。<br>2. 物體加速度 $a_{物} = \\frac{T}{m} = \\frac{9}{3} = 3\\text{ m/s}^2$。<br>3. 動滑輪加速度為物體的一半：$a_{滑輪} = \\frac{3}{2} = 1.5\\text{ m/s}^2$。'
+      },
+
+      // ==================== 7. 物理 - 浮力與液體壓力 (3 題) ====================
+      {
+        id: 'P30', subject: 'physics', topic: '浮力與液體壓力',
+        question: '將甲、乙、丙三顆「相同重量、不同體積」的球分別放入裝有等量水的三個相同燒杯中，三顆球皆浮於水面上且水未溢出（沒入體積分別占 $\\frac{1}{2}$、$\\frac{3}{4}$、$\\frac{5}{6}$）。各燒杯底部所受液體壓力大小關係為何？',
+        options: ['$P_甲 > P_乙 > P_丙$', '$P_甲 < P_乙 < P_丙$', '$P_甲 = P_乙 = P_丙$', '$P_甲 > P_丙 > P_乙$'],
+        correctIndex: 2,
+        explanation: '三球皆為浮體，浮力等於各自物重。因三球重量相同，故所受浮力相等，排開水的體積也完全相同。放入相同燒杯中水面上升高度相同，最終水深 $h$ 相等，由 $P = hd$ 知杯底壓力 $P_甲 = P_乙 = P_丙$。'
+      },
+      {
+        id: 'P31', subject: 'physics', topic: '浮力與液體壓力',
+        question: '將同一塊實心黏土先捏成實心球體丟入水中，發現其沉入水底；再將其捏成薄碗狀放於水面，發現其可浮在水面上。關於這兩種形狀在水中所受浮力的比較，下列何者正確？',
+        options: ['沉入水底時受到的浮力較大', '浮在水面時受到的浮力較大', '兩者受到的浮力一樣大', '形狀改變，無法比較浮力大小'],
+        correctIndex: 1,
+        explanation: '沉體時「浮力 $<$ 物重」，浮體時「浮力 $=$ 物重」。同一塊黏土重量不變，因此浮在水面上時所受浮力較大（排開的水體積也較多）。'
+      },
+      {
+        id: 'P32', subject: 'physics', topic: '浮力與液體壓力',
+        question: '潛水艇在深海中保持固定深度水平航行，關於其艙壁外側所受海水壓力的敘述，下列何者正確？',
+        options: ['僅有艙壁上方受有向下的壓力', '壓力方向皆垂直於艙壁各處表面', '艙壁下方面積較大，故受到的液體壓力較小', '若潛水艇體積縮小，則所受液體壓力也會隨之減小'],
+        correctIndex: 1,
+        explanation: '靜止液體壓力具有「無方向性（四面八方皆有）」且「恆垂直於接觸面」的特性，大小為 $P = hd$，只與深度及液體密度有關，與面積或體積無關。'
+      },
+
+      // ==================== 8. 物理 - 功與能、直線運動、力與運動核心觀念 (7 題) ====================
+      {
+        id: 'P33', subject: 'physics', topic: '功與能',
+        question: '小明手提重 $10\\text{ kgw}$ 的物品，在水平地面上等速向前走 $5\\text{ m}$，接著搭乘電梯等速向上 $5\\text{ m}$。關於小明對重物作功的敘述，下列何者正確？',
+        options: ['水平走動時，小明對重物作功 $50\\text{ J}$', '水平走動時，重力對重物作功 $50\\text{ J}$', '搭乘電梯向上時，小明對重物作正功', '搭乘電梯向上時，小明對重物不作功'],
+        correctIndex: 2,
+        explanation: '水平走動時施力向上、位移向前，兩者垂直不作功；搭乘電梯向上時施力向上且位移向上，方向相同，小明對重物作正功。'
+      },
+      {
+        id: 'P34', subject: 'physics', topic: '功與能',
+        question: '雲霄飛車由高處無動力滑下，若忽略空氣阻力與軌道摩擦力，在滑行過程中，關於其能量變化，下列敘述何者正確？',
+        options: ['高度下降時，動能減少，重力位能增加', '速度最快的位置，通常是重力位能最大的位置', '任何時刻的動能與重力位能總和保持不變', '滑行過程中的力學能會不斷減少'],
+        correctIndex: 2,
+        explanation: '無阻力與摩擦力作功時遵守力學能守恆，動能與重力位能互相轉換，兩者總和保持不變。'
+      },
+      {
+        id: 'P35', subject: 'physics', topic: '功與能',
+        question: '甲、乙兩部起重機，甲將 $100\\text{ kg}$ 的磚塊在 $10\\text{ s}$ 內等速抬升 $5\\text{ m}$；乙將 $50\\text{ kg}$ 的磚塊在 $5\\text{ s}$ 內等速抬升 $10\\text{ m}$。關於兩部起重機對磚塊作功的功率大小關係，下列何者正確？',
+        options: ['甲 > 乙', '甲 < 乙', '甲 = 乙', '無法比較'],
+        correctIndex: 1,
+        explanation: '甲作功 $W_甲 = 100g \\times 5 = 500g$，功率 $P_甲 = \\frac{500g}{10} = 50g$；乙作功 $W_乙 = 50g \\times 10 = 500g$，功率 $P_乙 = \\frac{500g}{5} = 100g$。故甲 $<$ 乙。'
+      },
+      {
+        id: 'P36', subject: 'physics', topic: '直線運動',
+        question: '將一球由地面鉛直上拋，到達最高點後再落回地面。若不計空氣阻力，並以向上為正方向，關於球在最高點時的速度 $v$ 與加速度 $a$，下列何者正確？',
+        options: ['$v = 0$，$a = 0$', '$v = 0$，$a < 0$', '$v > 0$，$a < 0$', '$v < 0$，$a > 0$'],
+        correctIndex: 1,
+        explanation: '到達最高點瞬間速度折返故 $v = 0$，但物體在空中全程受向下的地球重力作用，重力加速度恆向下（$a = -9.8\\text{ m/s}^2 < 0$）。'
+      },
+      {
+        id: 'P37', subject: 'physics', topic: '直線運動',
+        question: '某物體作直線運動的「位置－時間」($x-t$) 關係圖為一條斜率大於零的斜直線。這代表該物體正在作何種運動？',
+        options: ['靜止不動', '等速度運動', '等加速度運動', '變加速度運動'],
+        correctIndex: 1,
+        explanation: '在 $x-t$ 圖中，斜率代表速度；斜直線表示斜率固定不變，即物體作等速度運動。'
+      },
+      {
+        id: 'P38', subject: 'physics', topic: '直線運動',
+        question: '汽車在直線上作等加速度運動，其速度由 $10\\text{ m/s}$ 增加至 $30\\text{ m/s}$，費時 $5$ 秒。在此期間汽車行駛的距離為何？',
+        options: ['$50\\text{ m}$', '$100\\text{ m}$', '$150\\text{ m}$', '$200\\text{ m}$'],
+        correctIndex: 1,
+        explanation: '$v-t$ 圖線下面積即為位移（梯形面積）：$\\Delta x = \\frac{(10 + 30) \\times 5}{2} = 100\\text{ m}$。'
+      },
+      {
+        id: 'P39', subject: 'physics', topic: '力與運動',
+        question: '關於牛頓三大運動定律，下列敘述何者<strong>錯誤</strong>？',
+        options: ['公車緊急煞車時乘客向前傾，可用牛頓第一運動定律（慣性定律）解釋', '無重力太空中用相同力推 $1\\text{ kg}$ 鐵球與 $10\\text{ kg}$ 水球，鐵球加速度是水球的 $10$ 倍', '蘋果掉落時，地球對蘋果的萬有引力與蘋果對地球的萬有引力大小相等、方向相反', '因為地球質量遠大於蘋果，所以地球吸引蘋果的力大於蘋果吸引地球的力'],
+        correctIndex: 3,
+        explanation: '根據牛頓第三運動定律，作用力與反作用力必定同時發生、大小相等、方向相反，與兩物體質量大小無關。'
+      },
+
+      // ==================== 9. 數學 - 第一批會考錯題延伸 (24 題) ====================
+      // Topic 1: 平行四邊形與菱形 (3 Qs)
+      {
+        id: 'M01', subject: 'math', topic: '平行四邊形與菱形',
+        question: '四邊形 $ABCD$ 為平行四邊形，四邊形 $ACDE$ 為菱形。若 $\\angle 1$ 為 $\\angle BCD$ 的外角，且 $\\angle 1 = 55^\\circ$，求 $\\angle ACB$ 的度數為何？',
+        options: ['$50^\\circ$', '$55^\\circ$', '$60^\\circ$', '$65^\\circ$'],
+        correctIndex: 1,
+        explanation: '因 $ACDE$ 為菱形故 $AC=CD$；又 $ABCD$ 為平行四邊形故 $AB=CD$，因此 $AB=AC$，$\\triangle ABC$ 為等腰三角形，底角 $\\angle B = \\angle ACB$。外角 $\\angle 1 = \\angle B = 55^\\circ$，故 $\\angle ACB = 55^\\circ$。'
+      },
+      {
+        id: 'M02', subject: 'math', topic: '平行四邊形與菱形',
+        question: '四邊形 $ABCD$ 為平行四邊形，四邊形 $ACDE$ 為菱形。若平行四邊形中 $\\angle B = 50^\\circ$，求菱形中 $\\angle CDE$ 的度數為何？',
+        options: ['$80^\\circ$', '$100^\\circ$', '$120^\\circ$', '$130^\\circ$'],
+        correctIndex: 1,
+        explanation: '由 $AB=AC$ 得 $\\angle ACB = \\angle B = 50^\\circ$。平行四邊形中 $\\angle BCD = 180^\\circ - 50^\\circ = 130^\\circ$，故 $\\angle ACD = 130^\\circ - 50^\\circ = 80^\\circ$。菱形相鄰內角互補，得 $\\angle CDE = 180^\\circ - 80^\\circ = 100^\\circ$。'
+      },
+      {
+        id: 'M03', subject: 'math', topic: '平行四邊形與菱形',
+        question: '四邊形 $ABCD$ 為平行四邊形，四邊形 $ACDE$ 為菱形。若 $\\angle 1$ 為 $\\angle BCD$ 的外角，且 $\\angle 1 = 65^\\circ$，求 $\\angle ADC$ 的度數為何？',
+        options: ['$50^\\circ$', '$65^\\circ$', '$115^\\circ$', '$130^\\circ$'],
+        correctIndex: 1,
+        explanation: '平行四邊形中對角相等（$\\angle ADC = \\angle B$），且外角 $\\angle 1 = \\angle B$，故 $\\angle ADC = \\angle 1 = 65^\\circ$。'
+      },
+
+      // Topic 2: 根式化簡與有理化 (3 Qs)
+      {
+        id: 'M04', subject: 'math', topic: '根式化簡與有理化',
+        question: '算式 $\\frac{6}{\\sqrt{7}-\\sqrt{5}} - \\frac{12}{\\sqrt{11}+\\sqrt{5}}$ 之值為何？',
+        options: ['$3\\sqrt{2} - 3$', '$6\\sqrt{3} - 2\\sqrt{6}$', '$3\\sqrt{7} - 5\\sqrt{5} - 2\\sqrt{11}$', '$3\\sqrt{7} + 5\\sqrt{5} - 2\\sqrt{11}$'],
+        correctIndex: 3,
+        explanation: '前半項有理化：$\\frac{6(\\sqrt{7}+\\sqrt{5})}{7-5} = 3\\sqrt{7}+3\\sqrt{5}$；後半項有理化：$\\frac{12(\\sqrt{11}-\\sqrt{5})}{11-5} = 2\\sqrt{11}-2\\sqrt{5}$。相減得 $(3\\sqrt{7}+3\\sqrt{5}) - (2\\sqrt{11}-2\\sqrt{5}) = 3\\sqrt{7} + 5\\sqrt{5} - 2\\sqrt{11}$。'
+      },
+      {
+        id: 'M05', subject: 'math', topic: '根式化簡與有理化',
+        question: '算式 $\\frac{4}{\\sqrt{5}-\\sqrt{3}} - \\frac{8}{\\sqrt{11}+\\sqrt{3}}$ 之值為何？',
+        options: ['$2\\sqrt{5} - \\sqrt{11} + 3\\sqrt{3}$', '$2\\sqrt{5} - 2\\sqrt{11} + 4\\sqrt{3}$', '$2\\sqrt{5} - \\sqrt{11} + \\sqrt{3}$', '$2\\sqrt{5} + \\sqrt{11} - 3\\sqrt{3}$'],
+        correctIndex: 0,
+        explanation: '前半項 $\\frac{4(\\sqrt{5}+\\sqrt{3})}{2} = 2\\sqrt{5}+2\\sqrt{3}$；後半項 $\\frac{8(\\sqrt{11}-\\sqrt{3})}{8} = \\sqrt{11}-\\sqrt{3}$。相減得 $(2\\sqrt{5}+2\\sqrt{3}) - (\\sqrt{11}-\\sqrt{3}) = 2\\sqrt{5} - \\sqrt{11} + 3\\sqrt{3}$。'
+      },
+      {
+        id: 'M06', subject: 'math', topic: '根式化簡與有理化',
+        question: '算式 $\\frac{2}{\\sqrt{3}-1} + \\frac{6}{\\sqrt{7}+1}$ 之值為何？',
+        options: ['$\\sqrt{7} - \\sqrt{3}$', '$\\sqrt{7} + \\sqrt{3}$', '$2\\sqrt{7} + 2\\sqrt{3}$', '$\\sqrt{7} + \\sqrt{3} + 2$'],
+        correctIndex: 1,
+        explanation: '前半項 $\\frac{2(\\sqrt{3}+1)}{2} = \\sqrt{3}+1$；後半項 $\\frac{6(\\sqrt{7}-1)}{6} = \\sqrt{7}-1$。相加得 $\\sqrt{3}+1+\\sqrt{7}-1 = \\sqrt{7}+\\sqrt{3}$。'
+      },
+
+      // Topic 3: 相似三角形判別 (3 Qs)
+      {
+        id: 'M07', subject: 'math', topic: '相似三角形判別',
+        question: '根據下列各選項中所給的邊長長度及角度，判斷哪一個三角形與其他三個<strong>不相似</strong>？',
+        options: ['等腰三角形，頂角為 $40^\\circ$', '兩邊長為 $3$，且這兩邊夾角為 $70^\\circ$', '兩邊長為 $3$，其中一個底角為 $70^\\circ$', '三內角分別為 $40^\\circ, 70^\\circ, 70^\\circ$ 的三角形'],
+        correctIndex: 1,
+        explanation: '(A)(C)(D) 三個選項的內角皆為 $40^\\circ, 70^\\circ, 70^\\circ$；(B) 兩等長邊夾角 $70^\\circ$ 代表頂角 $70^\\circ$、底角 $55^\\circ$，角度不同故不相似。'
+      },
+      {
+        id: 'M08', subject: 'math', topic: '相似三角形判別',
+        question: '下列哪一個三角形與「三內角為 $30^\\circ, 75^\\circ, 75^\\circ$」的三角形<strong>不相似</strong>？',
+        options: ['等腰三角形，且有一底角為 $75^\\circ$', '兩邊長為 $5$，且其夾角為 $75^\\circ$', '等腰三角形，且頂角為 $30^\\circ$', '兩邊長為 $5$，且其夾角為 $30^\\circ$'],
+        correctIndex: 1,
+        explanation: '原三角形內角為 $30^\\circ, 75^\\circ, 75^\\circ$。(B) 兩等長邊夾角 $75^\\circ$ 表示頂角為 $75^\\circ$、底角為 $52.5^\\circ$，角度不符故不相似。'
+      },
+      {
+        id: 'M09', subject: 'math', topic: '相似三角形判別',
+        question: '若一等腰三角形的頂角為 $50^\\circ$，下列何者與其<strong>不相似</strong>？',
+        options: ['底角為 $65^\\circ$ 的等腰三角形', '兩邊長為 $4$，夾角為 $50^\\circ$ 的三角形', '兩邊長為 $4$，一底角為 $65^\\circ$ 的三角形', '兩邊長為 $4$，夾角為 $65^\\circ$ 的三角形'],
+        correctIndex: 3,
+        explanation: '頂角 $50^\\circ$ 的等腰三角形內角為 $50^\\circ, 65^\\circ, 65^\\circ$。(D) 兩等長邊夾角為 $65^\\circ$，則內角為 $65^\\circ, 57.5^\\circ, 57.5^\\circ$，故不相似。'
+      },
+
+      // Topic 4: 平行四邊形與重心面積關係 (3 Qs)
+      {
+        id: 'M10', subject: 'math', topic: '平行四邊形與重心面積',
+        question: '四邊形 $BDEG$ 為平行四邊形，$G$ 為 $\\triangle ABC$ 的重心，且 $C$ 在 $\\overline{DE}$ 上。若平行四邊形 $BDEG$ 的面積為 $12$，則 $\\triangle ABC$ 的面積為何？',
+        options: ['$8$', '$12$', '$15$', '$18$'],
+        correctIndex: 3,
+        explanation: '平行四邊形對角線 $BG$ 平分面積得 $\\triangle BGE = 6$；又 $\\overline{BG} \\parallel \\overline{DE}$，故 $\\triangle BGC = \\triangle BGE = 6$。$G$ 為重心，因此 $\\triangle ABC = 3 \\times 6 = 18$。'
+      },
+      {
+        id: 'M11', subject: 'math', topic: '平行四邊形與重心面積',
+        question: '四邊形 $BDEG$ 為平行四邊形，$G$ 為 $\\triangle ABC$ 的重心，且 $C$ 在 $\\overline{DE}$ 上。若平行四邊形 $BDEG$ 的面積為 $24$，則 $\\triangle ABC$ 的面積為何？',
+        options: ['$24$', '$30$', '$36$', '$48$'],
+        correctIndex: 2,
+        explanation: '$\\triangle BGC = \\triangle BGE = \\frac{1}{2} \\times 24 = 12$，重心將三角形三等分，故 $\\triangle ABC = 3 \\times 12 = 36$。'
+      },
+      {
+        id: 'M12', subject: 'math', topic: '平行四邊形與重心面積',
+        question: '四邊形 $BDEG$ 為平行四邊形，$G$ 為 $\\triangle ABC$ 的重心，且 $C$ 在 $\\overline{DE}$ 上。若 $\\triangle ABC$ 的面積為 $45$，則平行四邊形 $BDEG$ 的面積為何？',
+        options: ['$15$', '$22.5$', '$30$', '$45$'],
+        correctIndex: 2,
+        explanation: '$\\triangle BGC = \\frac{1}{3} \\times 45 = 15$，平行四邊形 $BDEG$ 面積 $= 2 \\times \\triangle BGC = 30$。'
+      },
+
+      // Topic 5: 直角柱體積與水高變化 (3 Qs)
+      {
+        id: 'M13', subject: 'math', topic: '直角柱體積與水高變化',
+        question: '橫置的直角柱密閉容器 $ABCDEF$，底面為直角三角形，$\\overline{AB}=3$，$\\overline{BC}=4$，$\\overline{AC}=5$，柱高 $\\overline{AD}=10$。矩形 $BCFE$ 平放於地面時水高為 $2$；若改將矩形 $CADF$ 平放於地面，則水高為何？',
+        options: ['$\\frac{4}{5}$', '$\\frac{6}{5}$', '$\\frac{8}{5}$', '$2$'],
+        correctIndex: 2,
+        explanation: '平放 $BCFE$ 時總高 $AB=3$、水高 $2$，無水高 $1$，無水面積比 $(\\frac{1}{3})^2 = \\frac{1}{9}$。改平放 $CADF$ 時底邊 $AC=5$、總高 $\\frac{3\\times 4}{5} = \\frac{12}{5}$，無水高比 $\\sqrt{\\frac{1}{9}} = \\frac{1}{3}$，無水高 $= \\frac{12}{5} \\times \\frac{1}{3} = \\frac{4}{5}$，故水高 $= \\frac{12}{5} - \\frac{4}{5} = \\frac{8}{5}$。'
+      },
+      {
+        id: 'M14', subject: 'math', topic: '直角柱體積與水高變化',
+        question: '橫置直角柱密閉容器 $ABCDEF$，底面直角三角形 $\\overline{AB}=6$、$\\overline{BC}=8$、$\\overline{AC}=10$。當矩形 $BCFE$ 平放於地面時水高為 $3$；若改將矩形 $CADF$ 平放於地面，求此時水高為何？',
+        options: ['$2.4$', '$3.0$', '$3.6$', '$4.8$'],
+        correctIndex: 0,
+        explanation: '平放 $BCFE$ 時無水高為 $6-3=3$，無水高比 $\\frac{3}{6}=\\frac{1}{2}$，無水面積比 $\\frac{1}{4}$。改平放 $CADF$ 時總高 $\\frac{6\\times 8}{10}=4.8$，無水高 $= 4.8 \\times \\frac{1}{2} = 2.4$，水高 $= 4.8 - 2.4 = 2.4$。'
+      },
+      {
+        id: 'M15', subject: 'math', topic: '直角柱體積與水高變化',
+        question: '直角柱密閉容器 $ABCDEF$，底面直角三角形 $\\overline{AB}=9$、$\\overline{BC}=12$、$\\overline{AC}=15$。矩形 $BCFE$ 平放於地面時水高為 $6$；若改平放矩形 $CADF$ 於地面，求水高為何？',
+        options: ['$2.4$', '$3.6$', '$4.8$', '$6.0$'],
+        correctIndex: 2,
+        explanation: '平放 $BCFE$ 時無水高為 $9-6=3$，無水高比 $\\frac{3}{9}=\\frac{1}{3}$，無水面積比 $\\frac{1}{9}$。改平放 $CADF$ 時總高 $\\frac{9\\times 12}{15}=7.2$，無水高 $= 7.2 \\times \\frac{1}{3} = 2.4$，水高 $= 7.2 - 2.4 = 4.8$。'
+      },
+
+      // Topic 6: 扇形與切線綜合幾何 (3 Qs)
+      {
+        id: 'M16', subject: 'math', topic: '扇形與切線綜合幾何',
+        question: '$\\triangle ABC$ 中，扇形 $ODE$ 的 $O, D$ 兩點在 $\\overline{BC}$ 上，$E$ 在 $\\overline{AB}$ 上，且 $\\overline{AC}$ 切 $\\overset{\\frown}{ED}$ 於 $F$ 點。若 $\\overline{AB}=\\overline{AC}$，$\\overline{BC}=6$，$\\angle EOB=90^\\circ$，$\\overline{OF}=3$，則 $\\overline{BO}$ 長度為何？',
+        options: ['$2$', '$\\frac{5}{2}$', '$\\frac{7}{3}$', '$\\frac{9}{4}$'],
+        correctIndex: 3,
+        explanation: '$\\overline{OE}=\\overline{OF}=3$，設 $\\angle B = \\angle C = \\theta$。由 $BC = \\frac{3}{\\tan\\theta} + \\frac{3}{\\sin\\theta} = 6 \\Rightarrow \\frac{1+\\cos\\theta}{\\sin\\theta} = 2$，解得 $\\tan\\theta = \\frac{4}{3}$，故 $\\overline{BO} = \\frac{3}{4/3} = \\frac{9}{4}$。'
+      },
+      {
+        id: 'M17', subject: 'math', topic: '扇形與切線綜合幾何',
+        question: '承上題幾何條件，若 $\\overline{AB}=\\overline{AC}$，$\\overline{BC}=8$，$\\angle EOB=90^\\circ$，$\\overline{OF}=4$，則 $\\overline{BO}$ 的長度為何？',
+        options: ['$2.5$', '$3$', '$3.5$', '$4$'],
+        correctIndex: 1,
+        explanation: '比例相同（$\\frac{BC}{OF} = \\frac{8}{4} = 2$），同樣解得 $\\tan\\theta = \\frac{4}{3}$，故 $\\overline{BO} = \\frac{4}{4/3} = 3$。'
+      },
+      {
+        id: 'M18', subject: 'math', topic: '扇形與切線綜合幾何',
+        question: '承上題幾何條件，若 $\\overline{AB}=\\overline{AC}$，$\\overline{BC}=12$，$\\angle EOB=90^\\circ$，$\\overline{OF}=6$，則 $\\overline{BO}$ 的長度為何？',
+        options: ['$3.5$', '$4$', '$4.5$', '$5$'],
+        correctIndex: 2,
+        explanation: '比例 $\\frac{BC}{OF} = \\frac{12}{6} = 2$，故 $\\tan\\theta = \\frac{4}{3}$，$\\overline{BO} = \\frac{6}{4/3} = 4.5$。'
+      },
+
+      // Topic 7: 尺規作圖與切圓圓心 (3 Qs)
+      {
+        id: 'M19', subject: 'math', topic: '尺規作圖與切圓圓心',
+        question: '坐標平面上，$A, B$ 分別在 $x$ 軸、$y$ 軸上，一圓弧分別與 $x$ 軸、$y$ 軸、$\\overline{AB}$ 相切於 $C, D, E$ 三點。甲：過 $C, D$ 分別作 $x, y$ 軸垂線交於 $P$；乙：作 $\\angle DBE$ 角平分線與過 $E$ 垂直 $\\overline{AB}$ 的直線交於 $P$。關於兩人尋找圓心 $P$ 的作法，何者正確？',
+        options: ['兩人皆正確', '兩人皆錯誤', '甲正確，乙錯誤', '甲錯誤，乙正確'],
+        correctIndex: 0,
+        explanation: '過切點垂直於切線的直線必通過圓心，且與兩相交切線同時相切的圓心必在兩切線夾角的角平分線上，故甲、乙兩人作法皆正確。'
+      },
+      {
+        id: 'M20', subject: 'math', topic: '尺規作圖與切圓圓心',
+        question: '坐標平面上，有一圓同時與 $x$ 軸、$y$ 軸及直線 $L$ 均相切。若想利用尺規作圖找出該圓的圓心 $P$，下列作法何者<strong>錯誤</strong>？',
+        options: ['作 $x$ 軸與 $y$ 軸交角的角平分線，再作 $y$ 軸與直線 $L$ 交角的角平分線，兩線交點即為 $P$', '找出圓與 $x$ 軸的切點作垂線，再找出圓與 $y$ 軸的切點作垂線，兩線交點即為 $P$', '找出圓與直線 $L$ 的切點作 $L$ 的垂線，再作 $x$ 軸與 $y$ 軸的角平分線，兩線交點即為 $P$', '連接原點與直線 $L$ 上的切點，取該線段的中垂線與 $x$ 軸相交即為 $P$'],
+        correctIndex: 3,
+        explanation: '圓心必在兩切線的角平分線上，以及過切點的切線垂線上；(D) 的中垂線交點無法保證到三切線等距，故錯誤。'
+      },
+      {
+        id: 'M21', subject: 'math', topic: '尺規作圖與切圓圓心',
+        question: '已知一圓弧切 $x$ 軸於 $C$ 點，切 $y$ 軸於 $D$ 點。關於尋找其圓心 $P$ 的作法：(甲) 作 $\\overline{CD}$ 的中垂線，圓心必在其上；(乙) 過 $C$ 點作 $x$ 軸垂線，過 $D$ 點作 $y$ 軸垂線，交點即為 $P$。下列何者正確？',
+        options: ['僅甲正確', '僅乙正確', '兩者作法皆正確', '兩者作法皆錯誤'],
+        correctIndex: 2,
+        explanation: '圓心 $P$ 到切點 $C, D$ 等距離（皆為半徑），故 $P$ 必在弦 $\\overline{CD}$ 的中垂線上（甲正確）；同時過切點的垂線交點即為圓心（乙正確）。'
+      },
+
+      // Topic 8: 三角形平行線面積 & 圓周角與中垂線 (3 Qs)
+      {
+        id: 'M22', subject: 'math', topic: '三角形面積與圓周角',
+        question: '$\\triangle ABC$ 中，$M$ 為 $\\overline{BC}$ 中點，$D, E$ 分別在 $\\overline{AC}, \\overline{BC}$ 上，且 $\\overline{AE} \\parallel \\overline{DM}$。若 $\\triangle CDE$ 的面積為 $18$，則 $\\triangle ABC$ 的面積為何？',
+        options: ['$27$', '$36$', '$45$', '$54$'],
+        correctIndex: 1,
+        explanation: '連接 $\\overline{AM}$。因 $\\overline{AE} \\parallel \\overline{DM}$，同底等高得 $\\triangle ADM = \\triangle EDM$，故 $\\triangle CDE = \\triangle CDM + \\triangle EDM = \\triangle AMC$。$M$ 為中點，所以 $\\triangle ABC = 2 \\times 18 = 36$。'
+      },
+      {
+        id: 'M23', subject: 'math', topic: '三角形面積與圓周角',
+        question: '有一圓通過 $\\triangle ABC$ 的三個頂點，且 $\\overline{BC}$ 的中垂線與 $\\overset{\\frown}{AC}$ 相交於 $D$ 點。若 $\\angle B = 74^\\circ$，$\\angle C = 46^\\circ$，則 $\\overset{\\frown}{AD}$ 的度數為何？',
+        options: ['$23^\\circ$', '$28^\\circ$', '$30^\\circ$', '$37^\\circ$'],
+        correctIndex: 1,
+        explanation: '$\\angle A = 180^\\circ - 74^\\circ - 46^\\circ = 60^\\circ$，優弧 $\\overset{\\frown}{BAC} = 360^\\circ - 120^\\circ = 240^\\circ$。$\\overline{BC}$ 中垂線平分優弧得 $\\overset{\\frown}{BD} = 120^\\circ$，又 $\\overset{\\frown}{AB} = 2\\angle C = 92^\\circ$，故 $\\overset{\\frown}{AD} = 120^\\circ - 92^\\circ = 28^\\circ$。'
+      },
+      {
+        id: 'M24', subject: 'math', topic: '三角形面積與圓周角',
+        question: '承上題圓周角題型，若 $\\angle B = 80^\\circ$，$\\angle C = 40^\\circ$，則 $\\overset{\\frown}{AD}$ 的度數為何？',
+        options: ['$20^\\circ$', '$30^\\circ$', '$40^\\circ$', '$50^\\circ$'],
+        correctIndex: 2,
+        explanation: '$\\angle A = 60^\\circ$，優弧 $\\overset{\\frown}{BAC} = 240^\\circ \\Rightarrow \\overset{\\frown}{BD} = 120^\\circ$。又 $\\overset{\\frown}{AB} = 2\\angle C = 80^\\circ$，故 $\\overset{\\frown}{AD} = 120^\\circ - 80^\\circ = 40^\\circ$。'
+      },
+
+      // ==================== 10. 數學 - 第二批會考錯題與遺漏幾何應用延伸 (24 題) ====================
+      // Topic 9: 大角對大邊與畫弧比較 (3 Qs)
+      {
+        id: 'M25', subject: 'math', topic: '大角對大邊與畫弧',
+        question: '$\\triangle ABC$ 中，以 $B$ 為圓心、$\\overline{AB}$ 長為半徑畫弧交 $\\overline{BC}$ 於 $D$；以 $C$ 為圓心、$\\overline{AC}$ 長為半徑畫弧交 $\\overline{BC}$ 於 $E$。若 $\\angle B = 40^\\circ$，$\\angle C = 36^\\circ$，下列何者正確？',
+        options: ['$\\overline{AD} = \\overline{AE}$', '$\\overline{AD} < \\overline{AE}$', '$\\overline{BE} = \\overline{CD}$', '$\\overline{BE} < \\overline{CD}$'],
+        correctIndex: 3,
+        explanation: '$\\angle B > \\angle C \\Rightarrow \\overline{AC} > \\overline{AB} \\Rightarrow \\overline{CE} > \\overline{BD}$。因 $\\overline{BE} = \\overline{BC} - \\overline{CE}$、$\\overline{CD} = \\overline{BC} - \\overline{BD}$，減去較大者剩餘較小，故 $\\overline{BE} < \\overline{CD}$。'
+      },
+      {
+        id: 'M26', subject: 'math', topic: '大角對大邊與畫弧',
+        question: '承上題畫弧方式，若 $\\triangle ABC$ 中 $\\angle B = 50^\\circ$，$\\angle C = 40^\\circ$，則 $\\overline{BE}$ 與 $\\overline{CD}$ 的大小關係為何？',
+        options: ['$\\overline{BE} > \\overline{CD}$', '$\\overline{BE} = \\overline{CD}$', '$\\overline{BE} < \\overline{CD}$', '無法比較'],
+        correctIndex: 2,
+        explanation: '$\\angle B > \\angle C \\Rightarrow \\overline{AC} > \\overline{AB} \\Rightarrow \\overline{CE} > \\overline{BD}$，故 $\\overline{BC}-\\overline{CE} < \\overline{BC}-\\overline{BD}$，即 $\\overline{BE} < \\overline{CD}$。'
+      },
+      {
+        id: 'M27', subject: 'math', topic: '大角對大邊與畫弧',
+        question: '承上題畫弧方式，若 $\\triangle ABC$ 中 $\\angle B = 45^\\circ$，$\\angle C = 65^\\circ$，則 $\\overline{BE}$ 與 $\\overline{CD}$ 的大小關係為何？',
+        options: ['$\\overline{BE} > \\overline{CD}$', '$\\overline{BE} = \\overline{CD}$', '$\\overline{BE} < \\overline{CD}$', '無法比較'],
+        correctIndex: 0,
+        explanation: '$\\angle B < \\angle C \\Rightarrow \\overline{AC} < \\overline{AB} \\Rightarrow \\overline{CE} < \\overline{BD}$，故 $\\overline{BC}-\\overline{CE} > \\overline{BC}-\\overline{BD}$，即 $\\overline{BE} > \\overline{CD}$。'
+      },
+
+      // Topic 10: 矩形與半圓等面積作圖 (3 Qs)
+      {
+        id: 'M28', subject: 'math', topic: '矩形與半圓等面積',
+        question: '矩形 $ABCD$ 中，$\\overline{AD} = 3\\overline{AB}$，$O$ 為 $\\overline{AD}$ 中點，$\\overset{\\frown}{AD}$ 是半圓。甲：延長 $\\overline{BO}$ 交 $\\overset{\\frown}{AD}$ 於 $P$；乙：以 $A$ 為圓心、$\\overline{AB}$ 為半徑畫弧交 $\\overset{\\frown}{AD}$ 於 $P$。欲使 $\\triangle PBC$ 面積等於矩形 $ABCD$ 面積，兩人作法何者正確？',
+        options: ['兩人皆正確', '兩人皆錯誤', '甲正確，乙錯誤', '甲錯誤，乙正確'],
+        correctIndex: 1,
+        explanation: '$\\triangle PBC$ 與矩形同底 $\\overline{BC}$，面積相等則 $P$ 到 $\\overline{BC}$ 距離需為 $2\\overline{AB}$（即 $P$ 到 $\\overline{AD}$ 距離為 $1\\overline{AB}$）。甲作法高為 $\\frac{3}{2}\\overline{AB}$ 以上不合，乙作法使 $AP=AB$ 但 $AP$ 不垂直 $AD$ 故高小於 $AB$，兩人皆錯誤。'
+      },
+      {
+        id: 'M29', subject: 'math', topic: '矩形與半圓等面積',
+        question: '矩形 $ABCD$ 中，$\\overline{AD} = 4\\overline{AB}$，在 $\\overline{AD}$ 上有一以 $\\overline{AD}$ 為直徑的半圓。若想在半圓上找一點 $P$，使得 $\\triangle PBC$ 面積等於矩形 $ABCD$ 面積，則 $P$ 點到 $\\overline{AD}$ 的垂直距離必須是 $\\overline{AB}$ 的幾倍？',
+        options: ['$0.5$ 倍', '$1$ 倍', '$1.5$ 倍', '$2$ 倍'],
+        correctIndex: 1,
+        explanation: '$\\triangle PBC$ 面積 $= \\frac{1}{2} \\times \\overline{BC} \\times h = \\overline{BC} \\times \\overline{AB} \\Rightarrow h = 2\\overline{AB}$。扣掉矩形本身的高度 $1\\overline{AB}$，故 $P$ 點到 $\\overline{AD}$ 的距離需為 $1\\overline{AB}$。'
+      },
+      {
+        id: 'M30', subject: 'math', topic: '矩形與半圓等面積',
+        question: '在坐標平面上，矩形 $ABCD$ 的四個頂點為 $A(0, 3), B(0, 0), C(5, 0), D(5, 3)$。若有一點 $P(x, y)$ 使得 $\\triangle PBC$ 的面積與矩形 $ABCD$ 面積相等，且 $y > 0$，求 $y$ 坐標的值為何？',
+        options: ['$3$', '$4.5$', '$6$', '$7.5$'],
+        correctIndex: 2,
+        explanation: '矩形面積 $= 5 \\times 3 = 15$。$\\triangle PBC$ 底邊 $\\overline{BC}=5$、高為 $y$，面積 $= \\frac{1}{2} \\times 5 \\times y = 15 \\Rightarrow y = 6$。'
+      },
+
+      // Topic 11: 中垂線與角平分線交角 (3 Qs)
+      {
+        id: 'M31', subject: 'math', topic: '中垂線與角平分線交角',
+        question: '銳角 $\\triangle ABC$ 中，直線 $L$ 為 $\\overline{BC}$ 的中垂線，直線 $M$ 為 $\\angle ABC$ 的角平分線，$L$ 與 $M$ 相交於 $P$ 點。若 $\\angle A = 60^\\circ$，$\\angle ACP = 24^\\circ$，則 $\\angle ABP$ 的度數為何？',
+        options: ['$24^\\circ$', '$30^\\circ$', '$32^\\circ$', '$36^\\circ$'],
+        correctIndex: 2,
+        explanation: '設 $\\angle ABP = x$，由角平分線得 $\\angle PBC = x$；由中垂線得 $\\overline{PB}=\\overline{PC} \\Rightarrow \\angle PCB = x$。內角和：$60^\\circ + 2x + (24^\\circ + x) = 180^\\circ \\Rightarrow 3x = 96^\\circ \\Rightarrow x = 32^\\circ$。'
+      },
+      {
+        id: 'M32', subject: 'math', topic: '中垂線與角平分線交角',
+        question: '銳角 $\\triangle ABC$ 中，$L$ 為 $\\overline{BC}$ 中垂線，$M$ 為 $\\angle ABC$ 角平分線，兩線交於 $P$。若 $\\angle A = 70^\\circ$，$\\angle ACP = 20^\\circ$，則 $\\angle ABP$ 的度數為何？',
+        options: ['$25^\\circ$', '$30^\\circ$', '$35^\\circ$', '$40^\\circ$'],
+        correctIndex: 1,
+        explanation: '設 $\\angle ABP = x$，同理 $70^\\circ + 2x + (20^\\circ + x) = 180^\\circ \\Rightarrow 3x = 90^\\circ \\Rightarrow x = 30^\\circ$。'
+      },
+      {
+        id: 'M33', subject: 'math', topic: '中垂線與角平分線交角',
+        question: '承上題條件，若 $\\angle A = 50^\\circ$，$\\angle ABP = 35^\\circ$，求 $\\angle ACP$ 的度數為何？',
+        options: ['$20^\\circ$', '$25^\\circ$', '$30^\\circ$', '$35^\\circ$'],
+        correctIndex: 1,
+        explanation: '$\\angle ABP = 35^\\circ \\Rightarrow \\angle B = 70^\\circ$ 且 $\\angle PCB = 35^\\circ$。$\\angle C = 180^\\circ - 50^\\circ - 70^\\circ = 60^\\circ$，故 $\\angle ACP = 60^\\circ - 35^\\circ = 25^\\circ$。'
+      },
+
+      // Topic 12: 二次函數對稱軸判斷 (3 Qs)
+      {
+        id: 'M34', subject: 'math', topic: '二次函數對稱軸判斷',
+        question: '已知二次函數 $y = a(x-h)^2 + k$ 的圖形通過 $(0, 5)$、$(10, 8)$ 兩點。若 $a < 0$，$0 < h < 10$，則 $h$ 之值可能為下列何者？',
+        options: ['$1$', '$3$', '$5$', '$7$'],
+        correctIndex: 3,
+        explanation: '$a < 0$ 開口向下，距對稱軸越近 $y$ 值越大。$(10, 8)$ 的 $y$ 值大於 $(0, 5)$，表示 $x=10$ 離對稱軸 $x=h$ 較近。兩點中點為 $x=5$，故 $h > 5$，選項中僅 $7$ 符合。'
+      },
+      {
+        id: 'M35', subject: 'math', topic: '二次函數對稱軸判斷',
+        question: '已知二次函數 $y = a(x-h)^2 + k$ 通過 $(0, 4)$ 與 $(8, 7)$ 兩點。若 $a < 0$ 且 $0 < h < 8$，則 $h$ 的值可能為下列何者？',
+        options: ['$2$', '$3$', '$4$', '$6$'],
+        correctIndex: 3,
+        explanation: '$a < 0$ 開口向下，$7 > 4$ 表示 $x=8$ 離對稱軸較近。兩點中點為 $x=4$，故 $h > 4$，選項中僅 $6$ 符合。'
+      },
+      {
+        id: 'M36', subject: 'math', topic: '二次函數對稱軸判斷',
+        question: '若二次函數 $y = a(x-h)^2 + k$ 通過 $(-3, 5)$ 與 $(5, 5)$ 兩點，則對稱軸 $h$ 的值為何？',
+        options: ['$-1$', '$1$', '$2$', '$4$'],
+        correctIndex: 1,
+        explanation: '兩點 $y$ 坐標相等，表示兩點對稱於對稱軸，$h = \\frac{-3 + 5}{2} = 1$。'
+      },
+
+      // Topic 13: 三心、兩圓切線與外心象限 (3 Qs)
+      {
+        id: 'M37', subject: 'math', topic: '三角形三心與圓性質',
+        question: '$G$ 為 $\\triangle ABC$ 的重心。若圓 $G$ 分別與 $\\overline{AC}$、$\\overline{BC}$ 相切，且與 $\\overline{AB}$ 相交於兩點，則關於 $\\triangle ABC$ 三邊長的大小關係，下列何者正確？',
+        options: ['$\\overline{BC} < \\overline{AC}$', '$\\overline{BC} > \\overline{AC}$', '$\\overline{AB} < \\overline{AC}$', '$\\overline{AB} > \\overline{AC}$'],
+        correctIndex: 3,
+        explanation: '重心將面積三等分（$\\triangle GAC = \\triangle GBC = \\triangle GAB$）。圓 $G$ 切 $\\overline{AC}, \\overline{BC}$ 故高相等 $\\Rightarrow \\overline{AC} = \\overline{BC}$；交 $\\overline{AB}$ 於兩點表示 $G$ 到 $\\overline{AB}$ 的高較短，面積相同時高較短者底邊較長，故 $\\overline{AB} > \\overline{AC}$。'
+      },
+      {
+        id: 'M38', subject: 'math', topic: '三角形三心與圓性質',
+        question: '$\\overline{AB}$ 切圓 $O_1$ 於 $B$ 點，$\\overline{AC}$ 切圓 $O_2$ 於 $C$ 點，$\\overline{BC}$ 分別交圓 $O_1$、圓 $O_2$ 於 $D, E$ 兩點。若 $\\angle BO_1D = 40^\\circ$，$\\angle CO_2E = 60^\\circ$，則 $\\angle A$ 的度數為何？',
+        options: ['$100^\\circ$', '$120^\\circ$', '$130^\\circ$', '$140^\\circ$'],
+        correctIndex: 2,
+        explanation: '等腰 $\\triangle O_1BD$ 中 $\\angle O_1BD = \\frac{180^\\circ-40^\\circ}{2} = 70^\\circ$，切線垂直半徑故 $\\angle ABC = 90^\\circ-70^\\circ = 20^\\circ$；同理 $\\angle ACB = 90^\\circ - \\frac{180^\\circ-60^\\circ}{2} = 30^\\circ$。$\\angle A = 180^\\circ - 20^\\circ - 30^\\circ = 130^\\circ$。'
+      },
+      {
+        id: 'M39', subject: 'math', topic: '三角形三心與圓性質',
+        question: '坐標平面上有 $A(0, a)$、$B(-9, 0)$、$C(10, 0)$ 三點，其中 $a > 0$。若 $\\angle BAC = 95^\\circ$，則 $\\triangle ABC$ 的外心在第幾象限？',
+        options: ['第一象限', '第二象限', '第三象限', '第四象限'],
+        correctIndex: 3,
+        explanation: '$\\angle BAC = 95^\\circ$ 為鈍角，鈍角三角形的外心落在三角形外部，且位於鈍角對邊（$\\overline{BC}$，即 $x$ 軸）的另一側（$y < 0$）。又 $\\overline{BC}$ 中垂線為 $x = \\frac{-9+10}{2} = 0.5 > 0$，故外心 $(0.5, y)$ 在第四象限。'
+      },
+
+      // Topic 14: 重疊全等三角形梯形高 & 二次函數平行四邊形 (3 Qs)
+      {
+        id: 'M40', subject: 'math', topic: '幾何梯形高與函數平移',
+        question: '灰色小三角形為三個全等大三角形的重疊處，扣掉灰色部分後分別為甲、乙、丙三個梯形。若甲頂角 $\\angle 1 = 58^\\circ$、乙底角 $\\angle 2 = 62^\\circ$、丙底角 $\\angle 3 = 60^\\circ$，則甲、乙、丙三梯形的高大小關係為何？',
+        options: ['乙 > 甲 > 丙', '乙 > 丙 > 甲', '丙 > 甲 > 乙', '丙 > 乙 > 甲'],
+        correctIndex: 0,
+        explanation: '全等三角形內角為 $58^\\circ, 60^\\circ, 62^\\circ$。大角對大邊，邊長越大對應的高越短。乙所在邊對角最小（$58^\\circ$），原三角形高最長，減去固定灰色高後乙梯形的高最大；丙對角最大（$62^\\circ$）高最短，故乙 $>$ 甲 $>$ 丙。'
+      },
+      {
+        id: 'M41', subject: 'math', topic: '幾何梯形高與函數平移',
+        question: '坐標平面上，二次函數 $y = -x^2 + 6x - 9$ 圖形頂點為 $A$，與 $y$ 軸交於 $B$ 點。若在此函數圖形上取一點 $C$，在 $x$ 軸上取一點 $D$，使得四邊形 $ABCD$ 為平行四邊形，則 $D$ 點坐標為何？',
+        options: ['$(6, 0)$', '$(9, 0)$', '$(-6, 0)$', '$(-9, 0)$'],
+        correctIndex: 1,
+        explanation: '$y = -(x-3)^2$ 得頂點 $A(3, 0)$，$x=0$ 代入得 $B(0, -9)$。平行四邊形對角線互相平分得 $A+C = B+D$，由 $y$ 坐標得 $y_C = -9 \\Rightarrow x_C = 6$，再由 $3 + 6 = 0 + d \\Rightarrow d = 9$，故 $D(9, 0)$。'
+      },
+      {
+        id: 'M42', subject: 'math', topic: '幾何梯形高與函數平移',
+        question: '坐標平面上，二次函數 $y = x^2 - 4x + 4$ 圖形頂點為 $A$，與 $y$ 軸交於 $B$ 點。若在此拋物線上取一點 $C$，在 $x$ 軸上取一點 $D$，使得四邊形 $ABCD$ 為平行四邊形，則 $D$ 點坐標為何？',
+        options: ['$(4, 0)$', '$(6, 0)$', '$(8, 0)$', '$(-6, 0)$'],
+        correctIndex: 1,
+        explanation: '$y = (x-2)^2$ 得 $A(2, 0)$、$B(0, 4)$。由 $A+C = B+D$ 得 $y_C = 4 \\Rightarrow x_C = 4$，再由 $2 + 4 = 0 + d \\Rightarrow d = 6$，故 $D(6, 0)$。'
+      },
+
+      // Topic 15: 正六邊形內心 & 矩形對角線最短距離 (3 Qs)
+      {
+        id: 'M43', subject: 'math', topic: '正六邊形與矩形最短距',
+        question: '正六邊形 $ABCDEF$ 中，$P, Q$ 兩點分別為 $\\triangle ACF$、$\\triangle CEF$ 的內心。若 $\\overline{AF} = 2$，則 $\\overline{PQ}$ 的長度為何？',
+        options: ['$1$', '$2$', '$2\\sqrt{3} - 2$', '$4 - 2\\sqrt{3}$'],
+        correctIndex: 2,
+        explanation: '$\\triangle ACF$ 為 $30^\\circ-60^\\circ-90^\\circ$ 直角三角形，三邊為 $2, 2\\sqrt{3}, 4$。內切圓半徑 $r = \\frac{2 + 2\\sqrt{3} - 4}{2} = \\sqrt{3} - 1$。由對稱性得 $\\overline{PQ} = 2r = 2\\sqrt{3} - 2$。'
+      },
+      {
+        id: 'M44', subject: 'math', topic: '正六邊形與矩形最短距',
+        question: '正六邊形 $ABCDEF$ 中，邊長 $\\overline{AF} = 6$。連接 $\\overline{AC}$、$\\overline{CF}$，求直角 $\\triangle ACF$ 的內切圓半徑為何？',
+        options: ['$3$', '$3\\sqrt{3} - 3$', '$6\\sqrt{3} - 6$', '$6 - 3\\sqrt{3}$'],
+        correctIndex: 1,
+        explanation: '直角 $\\triangle ACF$ 三邊長為 $6$、$6\\sqrt{3}$、$12$，內切圓半徑 $r = \\frac{6 + 6\\sqrt{3} - 12}{2} = 3\\sqrt{3} - 3$。'
+      },
+      {
+        id: 'M45', subject: 'math', topic: '正六邊形與矩形最短距',
+        question: '矩形 $ABCD$ 中，$\\overline{AB} = 6$，$\\overline{AD} = 8$，有一點 $P$ 沿對角線 $\\overline{BD}$ 移動。過 $P$ 作 $\\overline{PE} \\perp \\overline{AB}$、$\\overline{PF} \\perp \\overline{AD}$，則 $\\overline{EF}$ 的長度最小為多少？',
+        options: ['$\\frac{14}{5}$', '$\\frac{24}{5}$', '$5$', '$7$'],
+        correctIndex: 1,
+        explanation: '四邊形 $AEPF$ 為矩形，故 $\\overline{EF} = \\overline{AP}$。當 $\\overline{AP} \\perp \\overline{BD}$ 時距離最短，即直角 $\\triangle ABD$ 斜邊上的高：$\\frac{6 \\times 8}{10} = \\frac{24}{5}$。'
+      },
+
+      // Topic 16: 三角函數仰角 & 正方形半圓周長 (3 Qs)
+      {
+        id: 'M46', subject: 'math', topic: '三角仰角與圓弧周長',
+        question: '一建築物上有一個旗子高 $20\\text{ m}$，一個人站在建築物前某處，望向建築物頂端仰角為 $45^\\circ$，望向旗子頂端仰角為 $60^\\circ$（不計身高，$\\sqrt{3} \\approx 1.732$），則建築物多高？',
+        options: ['$24\\text{ m}$', '$26\\text{ m}$', '$27\\text{ m}$', '$29\\text{ m}$'],
+        correctIndex: 2,
+        explanation: '設建築物高 $h$，由仰角 $45^\\circ$ 知水平距離亦為 $h$；由仰角 $60^\\circ$ 得 $\\frac{h+20}{h} = \\sqrt{3} \\Rightarrow h(\\sqrt{3}-1) = 20 \\Rightarrow h = \\frac{20}{0.732} \\approx 27.3\\text{ m}$，最接近 $27\\text{ m}$。'
+      },
+      {
+        id: 'M47', subject: 'math', topic: '三角仰角與圓弧周長',
+        question: '一建築物上有一個旗子高 $10\\text{ m}$，觀測者站在建築物前望向建築物頂端仰角為 $45^\\circ$，望向旗子頂端仰角為 $60^\\circ$（不計身高，$\\sqrt{3} \\approx 1.732$），則建築物高度約為多少公尺？',
+        options: ['$10.0\\text{ m}$', '$13.7\\text{ m}$', '$17.3\\text{ m}$', '$20.0\\text{ m}$'],
+        correctIndex: 1,
+        explanation: '同理 $h = \\frac{10}{\\sqrt{3}-1} = \\frac{10}{0.732} \\approx 13.66\\text{ m}$，四捨五入為 $13.7\\text{ m}$。'
+      },
+      {
+        id: 'M48', subject: 'math', topic: '三角仰角與圓弧周長',
+        question: '一個大正方形邊長 $20$，被分割成邊長 $10$ 的四個小正方形，每個小正方形內皆有一個與邊界相切的白色半圓。請問這四個白色弧形的總周長為何？',
+        options: ['$10\\pi$', '$20\\pi$', '$30\\pi$', '$40\\pi$'],
+        correctIndex: 1,
+        explanation: '每個白色半圓的直徑為 $10$，單一半圓弧長為 $\\frac{10\\pi}{2} = 5\\pi$；四個白色半圓弧形總長為 $4 \\times 5\\pi = 20\\pi$（等同於兩個直徑為 $10$ 的完整圓周長）。'
+      }
+    ];
+
+    // =========================================================================
+    // STATE MANAGEMENT (localStorage)
+    // =========================================================================
+    const STORAGE_KEY = 'cap_daily10_quiz_87_v1';
+    let userState = {
+      answeredIds: [],
+      correctIds: [],
+      wrongIds: [],
+      todayDate: new Date().toLocaleDateString('zh-TW'),
+      todayAnsweredCount: 0
+    };
+
+    let currentSession = {
+      mode: 'all',
+      param: null,
+      modeLabel: '全部綜合特訓',
+      questions: [],
+      currentIndex: 0,
+      results: [],
+      answeredCurrent: false
+    };
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          userState = { ...userState, ...JSON.parse(raw) };
+        }
+        const todayStr = new Date().toLocaleDateString('zh-TW');
+        if (userState.todayDate !== todayStr) {
+          userState.todayDate = todayStr;
+          userState.todayAnsweredCount = 0;
+          saveState();
+        }
+      } catch (err) {
+        console.error('State load error:', err);
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(userState));
+      } catch (err) {
+        console.error('State save error:', err);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadState();
+      updateDashboard();
+      renderTopicControls();
+      renderMath();
+    });
+
+    function renderMath(el = document.body) {
+      if (typeof renderMathInElement === 'function') {
+        renderMathInElement(el, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false }
+          ],
+          throwOnError: false
+        });
+      }
+    }
+
+    function updateDashboard() {
+      const totalBank = questionBank.length;
+      const physicsCount = questionBank.filter(q => q.subject === 'physics').length;
+      const mathCount = questionBank.filter(q => q.subject === 'math').length;
+      const wrongCount = userState.wrongIds.length;
+      const answeredCount = userState.answeredIds.length;
+      const correctCount = userState.correctIds.length;
+      const accuracy = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
+
+      document.getElementById('total-bank-badge').textContent = totalBank;
+      document.getElementById('stat-bank-total').textContent = totalBank;
+      document.getElementById('count-all').textContent = totalBank;
+      document.getElementById('count-physics').textContent = physicsCount;
+      document.getElementById('count-math').textContent = mathCount;
+      document.getElementById('count-wrong-card').textContent = wrongCount;
+
+      document.getElementById('stat-answered').textContent = answeredCount;
+      document.getElementById('stat-accuracy').textContent = `${accuracy}%`;
+      document.getElementById('stat-wrong').textContent = wrongCount;
+
+      const todayCount = userState.todayAnsweredCount;
+      const pct = Math.min(100, Math.round((todayCount / 10) * 100));
+      document.getElementById('today-count').textContent = todayCount;
+      document.getElementById('today-progress-bar').style.width = `${pct}%`;
+
+      const statusEl = document.getElementById('today-status');
+      if (todayCount >= 10) {
+        statusEl.textContent = '🎉 今日 10 題目標已達成！';
+        statusEl.className = 'text-emerald-600 font-bold';
+      } else {
+        statusEl.textContent = `還差 ${10 - todayCount} 題達成今日目標`;
+        statusEl.className = 'text-brand-600 font-semibold';
+      }
+    }
+
+    function renderTopicControls() {
+      const topics = [...new Set(questionBank.map(q => q.topic))];
+      const container = document.getElementById('topic-chips');
+      const homeSelect = document.getElementById('home-unit-select');
+      const browseSelect = document.getElementById('browse-topic-filter');
+
+      container.innerHTML = topics.map(topic => {
+        const count = questionBank.filter(q => q.topic === topic).length;
+        const subj = questionBank.find(q => q.topic === topic)?.subject;
+        const cls = subj === 'physics'
+          ? 'bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100'
+          : 'bg-amber-50 text-amber-800 border-amber-200 hover:bg-amber-100';
+        return `<button onclick="startQuiz('topic', '${topic}')" class="px-3 py-1.5 rounded-xl border text-xs font-medium transition-colors ${cls}">${topic} (${count})</button>`;
+      }).join('');
+
+      topics.forEach(t => {
+        const count = questionBank.filter(q => q.topic === t).length;
+        const opt1 = document.createElement('option');
+        opt1.value = t;
+        opt1.textContent = `${t} (${count} 題)`;
+        homeSelect.appendChild(opt1);
+
+        const opt2 = document.createElement('option');
+        opt2.value = t;
+        opt2.textContent = `${t} (${count} 題)`;
+        browseSelect.appendChild(opt2);
+      });
+    }
+
+    function switchView(view) {
+      ['home', 'quiz', 'summary', 'browse'].forEach(v => {
+        document.getElementById(`view-${v}`).classList.add('hidden');
+      });
+      document.getElementById(`view-${view}`).classList.remove('hidden');
+
+      const navHome = document.getElementById('nav-home');
+      const navBrowse = document.getElementById('nav-browse');
+      if (view === 'browse') {
+        navBrowse.className = 'px-3.5 py-2 rounded-xl text-sm font-semibold transition-colors bg-brand-50 text-brand-700';
+        navHome.className = 'px-3.5 py-2 rounded-xl text-sm font-semibold transition-colors text-slate-600 hover:bg-slate-100';
+        renderBrowseList();
+      } else {
+        navHome.className = 'px-3.5 py-2 rounded-xl text-sm font-semibold transition-colors bg-brand-50 text-brand-700';
+        navBrowse.className = 'px-3.5 py-2 rounded-xl text-sm font-semibold transition-colors text-slate-600 hover:bg-slate-100';
+        if (view === 'home') updateDashboard();
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showModal(title, body, onConfirm, showCancel = true) {
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-body').textContent = body;
+      document.getElementById('modal-cancel').style.display = showCancel ? 'inline-block' : 'none';
+      document.getElementById('modal-confirm').onclick = () => {
+        closeModal();
+        if (onConfirm) onConfirm();
+      };
+      document.getElementById('custom-modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('custom-modal').classList.add('hidden');
+    }
+
+    function confirmResetProgress() {
+      showModal('重置作答紀錄', '確定要清除所有作答進度與錯題本紀錄嗎？', () => {
+        userState = {
+          answeredIds: [],
+          correctIds: [],
+          wrongIds: [],
+          todayDate: new Date().toLocaleDateString('zh-TW'),
+          todayAnsweredCount: 0
+        };
+        saveState();
+        updateDashboard();
+      });
+    }
+
+    function confirmQuitQuiz() {
+      if (currentSession.results.length === 0) {
+        switchView('home');
+        return;
+      }
+      showModal('離開本輪練習', '確定要結束目前尚未完成的題目並返回大廳嗎？', () => switchView('home'));
+    }
+
+    function shuffle(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function startQuiz(mode, param = null) {
+      let pool = [];
+      let label = '全部綜合特訓';
+
+      if (mode === 'all') {
+        pool = [...questionBank];
+      } else if (mode === 'physics') {
+        pool = questionBank.filter(q => q.subject === 'physics');
+        label = '物理力學與電學';
+      } else if (mode === 'math') {
+        pool = questionBank.filter(q => q.subject === 'math');
+        label = '數學幾何與函數';
+      } else if (mode === 'wrong') {
+        pool = questionBank.filter(q => userState.wrongIds.includes(q.id));
+        label = '錯題本重練';
+        if (pool.length === 0) {
+          showModal('錯題本目前為空', '目前沒有待重練的錯題，快去挑戰綜合特訓或單元練習吧！', null, false);
+          return;
+        }
+      } else if (mode === 'topic') {
+        pool = questionBank.filter(q => q.topic === param);
+        label = `單元：${param}`;
+      }
+
+      // Prioritize wrong & unanswered questions first
+      const wrongPriority = pool.filter(q => userState.wrongIds.includes(q.id));
+      const unansweredPriority = pool.filter(q => !userState.answeredIds.includes(q.id) && !userState.wrongIds.includes(q.id));
+      const masteredOthers = pool.filter(q => userState.correctIds.includes(q.id) && !userState.wrongIds.includes(q.id));
+      const selected = [...shuffle(wrongPriority), ...shuffle(unansweredPriority), ...shuffle(masteredOthers)].slice(0, Math.min(10, pool.length));
+
+      currentSession = {
+        mode,
+        param,
+        modeLabel: label,
+        questions: selected,
+        currentIndex: 0,
+        results: [],
+        answeredCurrent: false
+      };
+
+      document.getElementById('quiz-mode-label').textContent = label;
+      document.getElementById('quiz-total-num').textContent = selected.length;
+      switchView('quiz');
+      renderQuestion();
+    }
+
+    function restartSameMode() {
+      startQuiz(currentSession.mode, currentSession.param);
+    }
+
+    function retrySessionWrong() {
+      const wrongQs = currentSession.results.filter(r => !r.isCorrect).map(r => r.question);
+      if (wrongQs.length === 0) return;
+      currentSession = {
+        mode: 'retry_session',
+        param: null,
+        modeLabel: '本次錯題重練',
+        questions: shuffle(wrongQs),
+        currentIndex: 0,
+        results: [],
+        answeredCurrent: false
+      };
+      document.getElementById('quiz-mode-label').textContent = currentSession.modeLabel;
+      document.getElementById('quiz-total-num').textContent = currentSession.questions.length;
+      switchView('quiz');
+      renderQuestion();
+    }
+
+    function renderDots() {
+      const container = document.getElementById('quiz-dots');
+      const total = currentSession.questions.length;
+      container.style.gridTemplateColumns = `repeat(${total}, minmax(0, 1fr))`;
+      container.innerHTML = Array.from({ length: total }, (_, i) => {
+        let cls = 'bg-slate-200';
+        if (i < currentSession.results.length) {
+          cls = currentSession.results[i].isCorrect ? 'bg-emerald-500' : 'bg-rose-500';
+        } else if (i === currentSession.currentIndex) {
+          cls = 'bg-brand-600 ring-2 ring-brand-200';
+        }
+        return `<div class="h-2 rounded-full transition-all ${cls}"></div>`;
+      }).join('');
+    }
+
+    function renderQuestion() {
+      const q = currentSession.questions[currentSession.currentIndex];
+      currentSession.answeredCurrent = false;
+
+      document.getElementById('quiz-current-num').textContent = currentSession.currentIndex + 1;
+      renderDots();
+
+      const subjBadge = document.getElementById('q-subject-badge');
+      if (q.subject === 'physics') {
+        subjBadge.textContent = '物理';
+        subjBadge.className = 'text-xs font-bold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-700';
+      } else {
+        subjBadge.textContent = '數學';
+        subjBadge.className = 'text-xs font-bold px-2.5 py-1 rounded-md bg-amber-50 text-amber-800';
+      }
+      document.getElementById('q-topic-badge').textContent = q.topic;
+      document.getElementById('q-id-badge').textContent = `#${q.id}`;
+      document.getElementById('q-text').innerHTML = q.question;
+
+      const diagCont = document.getElementById('q-diagram-container');
+      const diagBox = document.getElementById('q-diagram');
+      if (q.svg && SVG_DIAGRAMS[q.svg]) {
+        diagBox.innerHTML = SVG_DIAGRAMS[q.svg];
+        diagCont.classList.remove('hidden');
+      } else {
+        diagBox.innerHTML = '';
+        diagCont.classList.add('hidden');
+      }
+
+      const letters = ['A', 'B', 'C', 'D'];
+      document.getElementById('q-options').innerHTML = q.options.map((opt, idx) => `
+        <button id="opt-btn-${idx}" onclick="submitOption(${idx})" class="option-btn w-full text-left p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-brand-500 hover:bg-brand-50/30 flex items-center gap-3.5 group">
+          <span id="opt-letter-${idx}" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm flex items-center justify-center shrink-0 group-hover:bg-brand-600 group-hover:text-white transition-colors">${letters[idx]}</span>
+          <span class="text-sm sm:text-base font-medium text-slate-800 flex-1">${opt}</span>
+        </button>
+      `).join('');
+
+      document.getElementById('q-feedback-box').classList.add('hidden');
+      renderMath(document.getElementById('view-quiz'));
+    }
+
+    function submitOption(idx) {
+      if (currentSession.answeredCurrent) return;
+      currentSession.answeredCurrent = true;
+
+      const q = currentSession.questions[currentSession.currentIndex];
+      const isCorrect = idx === q.correctIndex;
+      const letters = ['A', 'B', 'C', 'D'];
+
+      currentSession.results.push({ question: q, userIndex: idx, isCorrect });
+
+      if (!userState.answeredIds.includes(q.id)) userState.answeredIds.push(q.id);
+      userState.todayAnsweredCount += 1;
+
+      if (isCorrect) {
+        if (!userState.correctIds.includes(q.id)) userState.correctIds.push(q.id);
+        userState.wrongIds = userState.wrongIds.filter(id => id !== q.id);
+      } else {
+        if (!userState.wrongIds.includes(q.id)) userState.wrongIds.push(q.id);
+      }
+      saveState();
+
+      q.options.forEach((_, i) => {
+        const btn = document.getElementById(`opt-btn-${i}`);
+        const letter = document.getElementById(`opt-letter-${i}`);
+        btn.disabled = true;
+        btn.classList.remove('hover:border-brand-500', 'hover:bg-brand-50/30', 'group');
+
+        if (i === q.correctIndex) {
+          btn.className = 'w-full text-left p-4 rounded-xl border-2 border-emerald-500 bg-emerald-50/70 flex items-center gap-3.5';
+          letter.className = 'w-8 h-8 rounded-lg bg-emerald-500 text-white font-bold text-sm flex items-center justify-center shrink-0';
+        } else if (i === idx && !isCorrect) {
+          btn.className = 'w-full text-left p-4 rounded-xl border-2 border-rose-500 bg-rose-50/70 flex items-center gap-3.5';
+          letter.className = 'w-8 h-8 rounded-lg bg-rose-500 text-white font-bold text-sm flex items-center justify-center shrink-0';
+        } else {
+          btn.className = 'w-full text-left p-4 rounded-xl border-2 border-slate-200/70 bg-slate-50/50 opacity-60 flex items-center gap-3.5';
+        }
+      });
+
+      renderDots();
+
+      const fbBox = document.getElementById('q-feedback-box');
+      const icon = document.getElementById('q-feedback-icon');
+      const title = document.getElementById('q-feedback-title');
+      const sub = document.getElementById('q-feedback-subtitle');
+
+      if (isCorrect) {
+        icon.textContent = '✓';
+        icon.className = 'w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-white font-bold shrink-0 mt-0.5';
+        title.textContent = '答對了！觀念清晰';
+        title.className = 'font-bold text-base sm:text-lg text-emerald-700';
+        sub.textContent = `正確答案為 (${letters[q.correctIndex]})`;
+      } else {
+        icon.textContent = '✕';
+        icon.className = 'w-8 h-8 rounded-full bg-rose-500 flex items-center justify-center text-white font-bold shrink-0 mt-0.5';
+        title.textContent = '答錯了，已加入錯題本';
+        title.className = 'font-bold text-base sm:text-lg text-rose-700';
+        sub.textContent = `你的選擇是 (${letters[idx]})，正確答案為 (${letters[q.correctIndex]})`;
+      }
+
+      document.getElementById('q-explanation').innerHTML = q.explanation;
+      const nextBtn = document.getElementById('btn-next-question');
+      nextBtn.innerHTML = (currentSession.currentIndex + 1 >= currentSession.questions.length)
+        ? '<span>查看本輪結算</span> <span>🏁</span>'
+        : '<span>下一題</span> <span>→</span>';
+
+      fbBox.classList.remove('hidden');
+      renderMath(fbBox);
+    }
+
+    function nextQuestion() {
+      if (currentSession.currentIndex + 1 < currentSession.questions.length) {
+        currentSession.currentIndex += 1;
+        renderQuestion();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        showSummary();
+      }
+    }
+
+    function showSummary() {
+      switchView('summary');
+      const total = currentSession.results.length;
+      const correct = currentSession.results.filter(r => r.isCorrect).length;
+      const wrong = total - correct;
+
+      document.getElementById('summary-score').textContent = correct;
+      document.getElementById('summary-total').textContent = total;
+      document.getElementById('summary-correct').textContent = correct;
+      document.getElementById('summary-wrong').textContent = wrong;
+
+      const emoji = document.getElementById('summary-emoji');
+      const comment = document.getElementById('summary-comment');
+      if (correct === total) {
+        emoji.textContent = '🏆';
+        comment.textContent = '全對過關！這組觀念與計算你已經牢牢掌握！';
+      } else if (correct >= Math.ceil(total * 0.7)) {
+        emoji.textContent = '🎉';
+        comment.textContent = '表現不錯！把錯題解析看熟，下次一定更精準！';
+      } else {
+        emoji.textContent = '💪';
+        comment.textContent = '沒關係，錯題已幫你存進錯題本，建議立刻重練加深印象！';
+      }
+
+      const retryBtn = document.getElementById('btn-retry-session-wrong');
+      if (wrong > 0) {
+        retryBtn.classList.remove('hidden');
+        retryBtn.textContent = `重練本次錯題 (${wrong} 題)`;
+      } else {
+        retryBtn.classList.add('hidden');
+      }
+
+      const letters = ['A', 'B', 'C', 'D'];
+      const listEl = document.getElementById('summary-review-list');
+      listEl.innerHTML = currentSession.results.map((r, i) => {
+        const q = r.question;
+        const badge = r.isCorrect
+          ? '<span class="px-2 py-0.5 rounded text-xs font-bold bg-emerald-100 text-emerald-700">✓ 答對</span>'
+          : '<span class="px-2 py-0.5 rounded text-xs font-bold bg-rose-100 text-rose-700">✕ 答錯</span>';
+        return `
+          <div class="p-4 rounded-xl border ${r.isCorrect ? 'border-slate-200 bg-white' : 'border-rose-200 bg-rose-50/30'}">
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-slate-700 text-sm">第 ${i + 1} 題</span>
+                ${badge}
+                <span class="text-xs text-slate-500">${q.topic}</span>
+              </div>
+              <span class="text-xs font-mono text-slate-400">#${q.id}</span>
+            </div>
+            <div class="text-sm font-medium text-slate-900 mb-2">${q.question}</div>
+            <div class="text-xs space-y-1 text-slate-600 mb-2">
+              <div>你的答案：<strong class="${r.isCorrect ? 'text-emerald-600' : 'text-rose-600'}">(${letters[r.userIndex]}) ${q.options[r.userIndex]}</strong></div>
+              ${!r.isCorrect ? `<div>正確答案：<strong class="text-emerald-600">(${letters[q.correctIndex]}) ${q.options[q.correctIndex]}</strong></div>` : ''}
+            </div>
+            <details class="text-xs text-slate-600 bg-slate-50 p-3 rounded-lg border border-slate-200/80" ${!r.isCorrect ? 'open' : ''}>
+              <summary class="font-semibold text-brand-700 cursor-pointer select-none">查看解析</summary>
+              <div class="mt-2 leading-relaxed text-slate-700">${q.explanation}</div>
+            </details>
+          </div>
+        `;
+      }).join('');
+
+      renderMath(listEl);
+    }
+
+    function renderBrowseList() {
+      const subjFilter = document.getElementById('browse-subject-filter').value;
+      const topicFilter = document.getElementById('browse-topic-filter').value;
+      const keyword = document.getElementById('browse-search').value.trim().toLowerCase();
+
+      const filtered = questionBank.filter(q => {
+        if (subjFilter === 'physics' && q.subject !== 'physics') return false;
+        if (subjFilter === 'math' && q.subject !== 'math') return false;
+        if (subjFilter === 'wrong' && !userState.wrongIds.includes(q.id)) return false;
+        if (topicFilter !== 'all' && q.topic !== topicFilter) return false;
+        if (keyword && !q.question.toLowerCase().includes(keyword) && !q.topic.toLowerCase().includes(keyword) && !q.explanation.toLowerCase().includes(keyword)) return false;
+        return true;
+      });
+
+      document.getElementById('browse-total-count').textContent = filtered.length;
+      const letters = ['A', 'B', 'C', 'D'];
+      const listEl = document.getElementById('browse-list');
+
+      if (filtered.length === 0) {
+        listEl.innerHTML = `<div class="bg-white rounded-2xl border border-slate-200 p-10 text-center text-slate-500 text-sm">目前沒有符合篩選條件的題目。</div>`;
+        return;
+      }
+
+      listEl.innerHTML = filtered.map(q => {
+        const isWrong = userState.wrongIds.includes(q.id);
+        const isMastered = userState.correctIds.includes(q.id);
+        const subjTag = q.subject === 'physics'
+          ? '<span class="text-xs font-bold px-2 py-0.5 rounded bg-indigo-50 text-indigo-700">物理</span>'
+          : '<span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-800">數學</span>';
+        const statusTag = isWrong
+          ? '<span class="text-xs font-semibold px-2 py-0.5 rounded bg-rose-100 text-rose-700">錯題本</span>'
+          : (isMastered ? '<span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-100 text-emerald-700">已答對</span>' : '');
+
+        return `
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs">
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="text-xs font-mono font-bold text-slate-400">#${q.id}</span>
+              ${subjTag}
+              <span class="text-xs font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600">${q.topic}</span>
+              ${statusTag}
+            </div>
+            <div class="text-sm sm:text-base font-medium text-slate-900 leading-relaxed mb-3">${q.question}</div>
+            ${q.diagram && SVG_DIAGRAMS[q.diagram] ? `<div class="my-3 p-3 bg-slate-50 rounded-xl border border-slate-200/70 flex justify-center">${SVG_DIAGRAMS[q.diagram]}</div>` : ''}
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm mb-3">
+              ${q.options.map((opt, idx) => `
+                <div class="p-2.5 rounded-lg border ${idx === q.correctIndex ? 'border-emerald-300 bg-emerald-50/60 font-semibold text-emerald-900' : 'border-slate-200 text-slate-600'}">
+                  (${letters[idx]}) ${opt}
+                </div>
+              `).join('')}
+            </div>
+            <details class="text-xs sm:text-sm text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-200/80">
+              <summary class="font-semibold text-brand-700 cursor-pointer select-none">點擊展開完整解析</summary>
+              <div class="mt-2 leading-relaxed text-slate-700">${q.explanation}</div>
+            </details>
+          </div>
+        `;
+      }).join('');
+
+      renderMath(listEl);
+    }
+  </script>
+</body>
+</html>
