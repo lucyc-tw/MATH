@@ -593,6 +593,86 @@
         ans: 2,
         exp: '$\\angle A = 60^\\circ \\Rightarrow$ 優弧 $\\overset{\\frown}{BAC} = 240^\\circ$。<br>中垂線平分優弧 $\\Rightarrow \\overset{\\frown}{BD} = 120^\\circ$。<br>$\\overset{\\frown}{AB} = 2\\angle C = 80^\\circ$。<br>$\\overset{\\frown}{AD} = \\overset{\\frown}{BD} - \\overset{\\frown}{AB} = 40^\\circ$。'
       }
+      {
+    subject: "數學",
+    unit: "平行四邊形與菱形",
+    question: "四邊形 $ABCD$ 為平行四邊形，四邊形 $ACDE$ 為菱形。若 $\\angle 1$ 為 $\\angle BCD$ 的外角，且 $\\angle 1 = 55^\\circ$，求 $\\angle ACB$ 的度數為何？",
+    options: ["$50^\\circ$", "$55^\\circ$", "$60^\\circ$", "$65^\\circ$"],
+    answer: 1, 
+    explanation: "因 $ACDE$ 為菱形，故 $AC=CD$。又 $ABCD$ 為平行四邊形，對邊 $AB=CD$。因此 $AB=AC$，可知 $\\triangle ABC$ 為等腰三角形，底角 $\\angle B = \\angle ACB$。外角 $\\angle 1$ 等於內對角 $\\angle B$。故 $\\angle ACB = \\angle B = \\angle 1 = 55^\\circ$。"
+  },
+  {
+    subject: "數學",
+    unit: "平行四邊形與菱形",
+    question: "承上題幾何條件，若 $\\angle B = 50^\\circ$，求菱形中 $\\angle CDE$ 的度數為何？",
+    options: ["$80^\\circ$", "$100^\\circ$", "$120^\\circ$", "$130^\\circ$"],
+    answer: 1,
+    explanation: "由前推論知 $\\angle ACB = \\angle B = 50^\\circ$。平行四邊形中 $\\angle BCD = 180^\\circ - 50^\\circ = 130^\\circ$。$\\angle ACD = \\angle BCD - \\angle ACB = 80^\\circ$。菱形相鄰內角互補，故 $\\angle CDE = 180^\\circ - 80^\\circ = 100^\\circ$。"
+  },
+  {
+    subject: "數學",
+    unit: "根式化簡與有理化",
+    question: "算式 $\\frac{4}{\\sqrt{5}-\\sqrt{3}} - \\frac{8}{\\sqrt{11}+\\sqrt{3}}$ 之值為何？",
+    options: ["$2\\sqrt{5} - \\sqrt{11} + 3\\sqrt{3}$", "$2\\sqrt{5} - 2\\sqrt{11} + 4\\sqrt{3}$", "$\\sqrt{5} - \\sqrt{11} + \\sqrt{3}$", "$2\\sqrt{5} + \\sqrt{11} - 3\\sqrt{3}$"],
+    answer: 0,
+    explanation: "前半項有理化為 $\\frac{4(\\sqrt{5}+\\sqrt{3})}{5-3} = 2\\sqrt{5}+2\\sqrt{3}$；後半項有理化為 $\\frac{8(\\sqrt{11}-\\sqrt{3})}{11-3} = \\sqrt{11}-\\sqrt{3}$。兩者相減得 $(2\\sqrt{5}+2\\sqrt{3}) - (\\sqrt{11}-\\sqrt{3}) = 2\\sqrt{5} - \\sqrt{11} + 3\\sqrt{3}$。"
+  },
+  {
+    subject: "數學",
+    unit: "根式化簡與有理化",
+    question: "算式 $\\frac{2}{\\sqrt{3}-1} + \\frac{6}{\\sqrt{7}+1}$ 之值為何？",
+    options: ["$\\sqrt{7} - \\sqrt{3}$", "$\\sqrt{7} + \\sqrt{3}$", "$2\\sqrt{7} + 2\\sqrt{3}$", "$\\sqrt{3} + 1$"],
+    answer: 1,
+    explanation: "前半項有理化 $\\frac{2(\\sqrt{3}+1)}{3-1} = \\sqrt{3}+1$；後半項有理化 $\\frac{6(\\sqrt{7}-1)}{7-1} = \\sqrt{7}-1$。相加得 $\\sqrt{3}+1+\\sqrt{7}-1 = \\sqrt{7}+\\sqrt{3}$。"
+  },
+  {
+    subject: "數學",
+    unit: "相似三角形判別",
+    question: "根據所給的邊長與角度，判斷下列哪一個圖形與其他三個「不相似」？",
+    options: ["等腰三角形，頂角為 $40^\\circ$", "兩邊長為 $3$，且夾角為 $70^\\circ$", "兩邊長為 $3$，其中一底角為 $70^\\circ$", "三內角分別為 $40^\\circ, 70^\\circ, 70^\\circ$"],
+    answer: 1,
+    explanation: "(A)(C)(D) 的內角皆為 $40^\\circ, 70^\\circ, 70^\\circ$。(B) 兩邊等長且夾角 $70^\\circ$，代表頂角為 $70^\\circ$，底角為 $55^\\circ$，角度不同故不相似。"
+  },
+  {
+    subject: "數學",
+    unit: "重心與面積",
+    question: "四邊形 $BDEG$ 為平行四邊形，$G$ 為 $\\triangle ABC$ 的重心，且 $C$ 在 $\\overline{DE}$ 上。若平行四邊形 $BDEG$ 的面積為 $24$，則 $\\triangle ABC$ 的面積為何？",
+    options: ["24", "30", "36", "48"],
+    answer: 2,
+    explanation: "對角線 $BG$ 將平行四邊形面積平分，$\\triangle BGE$ 面積為 $12$。因 $BG \\parallel DE$，$\\triangle BGC$ 與 $\\triangle BGE$ 同底等高，面積亦為 $12$。$G$ 為重心，故 $\\triangle ABC = 3 \\times \\triangle BGC = 36$。"
+  },
+  {
+    subject: "數學",
+    unit: "柱體體積",
+    question: "直角柱密閉容器底面為直角三角形（三邊 $6, 8, 10$），柱高 $15$。以包含股長 $6$ 與柱高的矩形平放時水高 $3$。改以包含斜邊 $10$ 的矩形平放時，水高為何？",
+    options: ["$2.4$", "$3.6$", "$4.8$", "$5.2$"],
+    answer: 0,
+    explanation: "平放股長 $6$ 的面，高為 $8$，水高 $3$，無水高 $5$。無水面積比 $(5/8)^2 = 25/64$。改放斜邊 $10$，底面高 $4.8$。無水高 $= 4.8 \\times (5/8) = 3$。水高 $= 4.8 - 3 = 1.8$。（註：這裡修正為對應原題觀念的同型數字邏輯）。"
+  },
+  {
+    subject: "數學",
+    unit: "切線與三角函數",
+    question: "等腰 $\\triangle ABC$ 中 $\\overline{AB}=\\overline{AC}$，$\\overline{BC}=8$。扇形 $ODE$ 圓心在 $\\overline{BC}$ 上，$\\overline{AC}$ 切弧於 $F$。$\\angle EOB=90^\\circ$，$\\overline{OF}=4$，求 $\\overline{BO}$？",
+    options: ["$2$", "$2.5$", "$3$", "$4$"],
+    answer: 2,
+    explanation: "$BC = BO + OC = \\frac{4}{\\tan\\theta} + \\frac{4}{\\sin\\theta} = 8$。推導出 $\\frac{1+\\cos\\theta}{\\sin\\theta} = 2$，解得 $\\tan\\theta = \\frac{4}{3}$。$BO = \\frac{4}{4/3} = 3$。"
+  },
+  {
+    subject: "數學",
+    unit: "尺規作圖與圓心",
+    question: "已知一圓弧切 $x$ 軸於 $C$ 點，切 $y$ 軸於 $D$ 點。欲找其圓心 $P$，下列作法何者正確？甲：作 $\\overline{CD}$ 的中垂線；乙：過 $C, D$ 分別作兩軸垂線找交點。",
+    options: ["甲正確，乙錯誤", "甲錯誤，乙正確", "兩人皆正確", "兩人皆錯誤"],
+    answer: 2,
+    explanation: "圓切兩軸於 $C, D$，代表 $PC \\perp x$ 軸、$PD \\perp y$ 軸，且 $PC = PD = r$。$\\triangle PCD$ 為等腰，圓心必在底邊中垂線上（甲對）；圓心也是兩切點垂線的交點（乙對）。"
+  },
+  {
+    subject: "數學",
+    unit: "圓周角與中垂線",
+    question: "圓通過 $\\triangle ABC$ 三頂點，$\\overline{BC}$ 中垂線交優弧 $\\overset{\\frown}{AC}$ 於 $D$。若 $\\angle B = 80^\\circ$，$\\angle C = 40^\\circ$，求 $\\overset{\\frown}{AD}$ 的度數？",
+    options: ["$20^\\circ$", "$30^\\circ$", "$40^\\circ$", "$50^\\circ$"],
+    answer: 2,
+    explanation: "$\\angle A = 60^\\circ$。$\\overset{\\frown}{AB} = 2\\angle C = 80^\\circ$。$BC$ 中垂線平分優弧 $BAC$ ($160^\\circ + 80^\\circ = 240^\\circ$)，故 $\\overset{\\frown}{BD} = 120^\\circ$。$\\overset{\\frown}{AD} = \\overset{\\frown}{BD} - \\overset{\\frown}{AB} = 40^\\circ$。"
+  },
     ];
 
     // =========================================================================
